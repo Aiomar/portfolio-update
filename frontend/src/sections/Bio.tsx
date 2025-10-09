@@ -1,7 +1,7 @@
 import { useEffect, forwardRef } from "react";
 import { motion, useAnimation } from "motion/react";
-import Contact from "./Contact";
 import type { Ref } from "react";
+import Social from "../components/Social";
 
 
 type props = {
@@ -9,7 +9,7 @@ type props = {
   currentVisibleSection: string;
 }
 
-const Bio = forwardRef(({ id, currentVisibleSection }:props, ref:Ref<HTMLDivElement>) => {
+const Bio = forwardRef(({ id, currentVisibleSection }:props, ref:Ref<HTMLDivElement | null>) => {
   const motionVariants = {
     hidden: { opacity: 0, y: 75 },
     visible: { opacity: 1, y: 0 },
@@ -76,7 +76,7 @@ const Bio = forwardRef(({ id, currentVisibleSection }:props, ref:Ref<HTMLDivElem
           </div>
         </div>
         <div className="flex justify-center items-center mt-5 ">
-          <Contact />
+          <Social />
         </div>
       </motion.div>
     </section>

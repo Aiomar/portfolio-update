@@ -31,7 +31,8 @@ export default function App() {
   const toggleNavBar = () => setIsPhoneNavOpen((prev) => !prev);
 
   // Create a ref to store your sections’ DOM nodes
-  const sectionsRefs = useRef([]);
+  // typed as an array of possible HTMLDivElement or null values
+  const sectionsRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   // State to track which section is visible
   const [currentVisibleSection, setcurrentVisibleSection] = useState("about");
@@ -89,28 +90,28 @@ export default function App() {
         />
       }
       <Bio
-        ref={(el) => {
+        ref={(el: HTMLDivElement | null) => {
           sectionsRefs.current[0] = el;
         }}
         id="about"
         currentVisibleSection={currentVisibleSection}
       />
       <Projects
-        ref={(el) => {
+        ref={(el: HTMLDivElement | null) => {
           sectionsRefs.current[1] = el;
         }}
         id="projects"
         currentVisibleSection={currentVisibleSection}
       />
       <Resume
-        ref={(el) => {
+        ref={(el: HTMLDivElement | null) => {
           sectionsRefs.current[2] = el;
         }}
         id="resume"
         currentVisibleSection={currentVisibleSection}
       />
       <Contact
-        ref={(el) => {
+        ref={(el: HTMLDivElement | null) => {
           sectionsRefs.current[3] = el;
         }}
         id="contact"

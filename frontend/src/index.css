@@ -1,1 +1,15 @@
 @import "tailwindcss";
+
+body {
+  @apply bg-gray-50 dark:bg-gray-900;
+}
+
+/* Hide scrollbar for Chrome, Safari, and Edge */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for Firefox */
+.no-scrollbar {
+  scrollbar-width: none;
+}

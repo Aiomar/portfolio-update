@@ -11,7 +11,8 @@ const projects = [
     tags: ["Vite", "React", "Nest js", "MongoDB",],
     image: "/padzone.png",
     githubLink: "https://github.com",
-    link: "https://omarshop.vercel.app/"
+    link: "https://omarshop.vercel.app/",
+    status:""
   },
   {
     title: "Med Portfolio App",
@@ -19,7 +20,8 @@ const projects = [
     tags: ["Vite", "React", "Tailwind CSS"],
     image: "/medportfolio.png",
     githubLink: "https://github.com",
-    link: "https://medyassine.vercel.app/"
+    link: "https://medyassine.vercel.app/",
+    status:""
   },
   {
     title: "Notini",
@@ -27,7 +29,8 @@ const projects = [
     tags: ["React", "Vite", "Tailwind CSS"],
     image: "/notini.png",
     githubLink: "https://github.com",
-    link: "https://notini.vercel.app/"
+    link: "https://notini.vercel.app/",
+    status:""
   },
   {
     title: "PinkDragons",
@@ -35,7 +38,8 @@ const projects = [
     tags: ["React", "Vite", "Tailwind CSS"],
     image: "/pinkdragons.png",
     githubLink: "https://github.com",
-    link: "https://pinkdragons.vercel.app/"
+    link: "https://pinkdragons.vercel.app/",
+    status:""
   },
    {
     title: "E-commerce Shop ",
@@ -43,7 +47,8 @@ const projects = [
     tags: ["React", "Vite", "Tailwind CSS"],
     image: "/clothesshop.png",
     githubLink: "https://github.com",
-    link: ""
+    link: "",
+    status:""
   },
 ];
 
@@ -85,7 +90,7 @@ const projects = [
             <Project
               key={project.title}
               title={project.title}
-              deatils={project.description}
+              details={project.description}
               link={project.link}
               repo={project.githubLink}
               img={project.image}
