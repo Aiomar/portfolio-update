@@ -8,7 +8,9 @@ export default function App() {
   const [theme, setTheme] = useState<string>(localTheme);
   useEffect(()=>{
      localStorage.setItem("theme", theme)
-     document.documentElement.classList.add(" "+theme)
+     if (theme === 'dark') {
+      document.documentElement.classList.add(" "+theme)
+     }
     },
     [theme]
   )
