@@ -1,6 +1,14 @@
+import { useEffect, useState, useRef } from "react"
+import { ArrowUpCircle } from "lucide-react";
+// sections
+import Bio from "./sections/Bio";
+import Projects from "./sections/Projects";
+import Resume from "./sections/Resume";
+import Contact from "./sections/Contact";
+// components
 import Header from "./components/Header"
 import Footer from "./components/Footer"
-import { useEffect, useState, useRef } from "react"
+import Aside from "./components/Aside";
 
 export default function App() {
   // theme controlles
@@ -26,7 +34,7 @@ export default function App() {
   const sectionsRefs = useRef([]);
 
   // State to track which section is visible
-  const [visible, setVisible] = useState("about");
+  const [currentVisibleSection, setcurrentVisibleSection] = useState("about");
 
   // Setup Intersection Observer (using useLayoutEffect ensures refs are populated)
   useEffect(() => {
@@ -36,7 +44,7 @@ export default function App() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting && sections.includes(entry.target.id)) {
-            setVisible(entry.target.id);
+            setcurrentVisibleSection(entry.target.id);
           }
         });
       },
@@ -56,7 +64,7 @@ export default function App() {
     };
   }, []);
 
-  const showTopScroll = visible !== "about";
+  const showTopScroll = currentVisibleSection !== "about";
 
   return (
     <div className="w-full h-screen max-h-fit relative overflow-x-hidden no-scrollbar">
@@ -66,38 +74,39 @@ export default function App() {
           updateTheme={updateTheme}
           toggleNavBar={toggleNavBar}
           isPhoneNavOpen={isPhoneNavOpen}
-          currentVisibleSection={visible} 
+          currentVisibleSection={currentVisibleSection} 
         />
       </div>
-      <ToastContainer />
-      {isPhoneNavOpen && <Aside toggleNavBar={toggleNavBar} visible={visible} />}
+      {isPhoneNavOpen && 
+        <Aside toggleNavBar={toggleNavBar} currentVisibleSection={currentVisibleSection} />
+      }
       <Bio
         ref={(el) => {
           sectionsRefs.current[0] = el;
         }}
         id="about"
-        visible={visible}
+        currentVisibleSection={currentVisibleSection}
       />
       <Projects
         ref={(el) => {
           sectionsRefs.current[1] = el;
         }}
         id="projects"
-        visible={visible}
+        currentVisibleSection={currentVisibleSection}
       />
       <Resume
         ref={(el) => {
           sectionsRefs.current[2] = el;
         }}
         id="resume"
-        visible={visible}
+        currentVisibleSection={currentVisibleSection}
       />
-      <Form
+      <Contact
         ref={(el) => {
           sectionsRefs.current[3] = el;
         }}
         id="contact"
-        visible={visible}
+        currentVisibleSection={currentVisibleSection}
       />
       <Footer />
       {showTopScroll && (
@@ -107,7 +116,7 @@ export default function App() {
               className="flex items-center justify-center rounded-full w-12 h-12 bg-sky-400
             over:bg-sky-300 transition-shadow shadow-md hover:scale-105"
             >
-              <FaArrowUp size={20} className="text-white dark:text-black" />
+              <ArrowUpCircle size={20} className="text-white dark:text-black" />
             </button>
           </a>
         </div>
