@@ -1,11 +1,12 @@
 import { Github } from "lucide-react";
+import logo from '../assets/logo.svg'
 
 export default function Nav({ currentVisibleSection }:props) {
   return (
     <div className="flex flex-col md:flex-row">
       <div>
         <img
-          src="assets/logo.svg"
+          src={logo}
           alt=""
           className="w-10 mr-10 ml-10 md:ml-0 hidden md:flex"
         />
