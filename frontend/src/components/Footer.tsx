@@ -1,3 +1,5 @@
+import logo from '../assets/logo.svg'
+
 export default function Footer() {
   return (
     <footer 
@@ -14,7 +16,8 @@ export default function Footer() {
             rtl:space-x-reverse"
           >
             <img 
-              src="assets/logo.svg" className="h-8" alt="Flowbite Logo" 
+              src={logo} 
+              className="h-8" alt="Flowbite Logo" 
             />
           </a>
           <ul 
