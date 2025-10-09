@@ -67,8 +67,13 @@ export default function App() {
   const showTopScroll = currentVisibleSection !== "about";
 
   return (
-    <div className="w-full h-screen max-h-fit relative overflow-x-hidden no-scrollbar">
-      <div className="fixed right-0 left-0 z-40 w-full">
+    <div 
+      className="w-full h-screen max-h-fit relative 
+      overflow-x-hidden no-scrollbar"
+    >
+      <div 
+        className="fixed right-0 left-0 z-40 w-full"
+      >
         <Header 
           theme={theme}
           updateTheme={updateTheme}
@@ -78,7 +83,10 @@ export default function App() {
         />
       </div>
       {isPhoneNavOpen && 
-        <Aside toggleNavBar={toggleNavBar} currentVisibleSection={currentVisibleSection} />
+        <Aside 
+          toggleNavBar={toggleNavBar} 
+          currentVisibleSection={currentVisibleSection} 
+        />
       }
       <Bio
         ref={(el) => {
