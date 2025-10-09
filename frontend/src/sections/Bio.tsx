@@ -2,7 +2,8 @@ import { useEffect, forwardRef } from "react";
 import { motion, useAnimation } from "motion/react";
 import type { Ref } from "react";
 import Social from "../components/Social";
-
+import profile from '../assets/profile.jpg'
+import code from '../assets/Code.svg'
 
 type props = {
   id: string;
@@ -28,46 +29,64 @@ const Bio = forwardRef(({ id, currentVisibleSection }:props, ref:Ref<HTMLDivElem
       id={id}
       ref={ref}
       className="w-full h-screen flex flex-col items-center
-      bg-slate-100 dark:bg-gray-900   px-4"
+      bg-slate-100 dark:bg-gray-900  px-4"
     >
       <motion.div
         ref={ref}
-        className="mt-40 w-full max-w-5xl"
+        className="flex mt-40 w-full max-w-5xl"
         variants={motionVariants}
         initial="hidden"
         animate={mainControls}
         transition={{ duration: 0.5, delay: 0.25 }}
       >
-        <div className="relative">
-          <img
-            src="/assets/profile.jpg"
-            className="hidden md:w-64 rounded-full md:float-left md:mr-10 md:flex "
-            alt="Omar Aidi"
-          />
-          <div className="md:hidden flex flex-col items-center mb-3">
-            <img
-              src="/assets/profile.jpg"
-              className="rounded-full w-36 sm:w-44 md:w-52  md:float-right md:ml-6 "
-              alt="Omar Aidi"
-            />
-          </div>
-
-          <div className="flex items-center flex-col  md:items-start">
-            <p className="text-lg sm:text-xl md:text-lg font-bold tracking-wider dark:text-white text-gray-800">
-              Hi There 👋 I m
-            </p>
-            <h1 className="mt-2 text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white">
-              Omar Aidi
-            </h1>
-            <p className="mt-2 text-blue-500 md:text-2xl   sm:text-xl font-semibold text-2xl">
-              Full Stack Web Developer
+        <div className="flex flex-col ">
+          <div className="flex items-center flex-col  md:items-start md:mt-20">
+             <div 
+              className="flex flex-row"
+              >
+                <p 
+                  className="text-lg sm:text-xl md:text-lg font-bold
+                  tracking-wider dark:text-white text-gray-800"
+                >
+                  Hello!
+                </p>
+                <p 
+                  className="text-lg pl-2 sm:text-xl md:text-lg font-bold
+                  tracking-wider dark:text-blue-400 text-gray-800"
+                >
+                  I'm
+                </p>
+              </div>
+            <div 
+              className="flex flex-row"
+            >
+              <h1 
+                className="mt-1 text-white md:text-3xl sm:text-xl font-bold text-2xl"
+              >
+                Omar 
+              </h1>
+              <h1 
+                className="mt-1 pl-2 text-blue-400 md:text-3xl  
+                sm:text-xl font-bold text-2xl"
+                >
+                Aidi
+              </h1>
+            </div>
+           
+            <p 
+              className="mt-2 text-gray-500 md:text-2xl
+              sm:text-xl text-2xl"
+            >
+              Full-Stack Developer & CS Student
             </p>
           </div>
           <div 
-            className="mt-8 text-lg sm:text-base md:text-md text-gray-700
-            dark:text-gray-300 leading-relaxed text-wrap w-96 md:ml-72"
+            className="mt-2 text-lg sm:text-base md:text-md 
+            dark:text-gray-300 leading-relaxed text-wrap w-96"
           >
-            <p>
+            <p 
+              className="text-gray-300"
+            >
               19 years old Computer Science Student at ISIGK I’m currently a
               junior Full Stack Web Developer looking for great work
               opportunities and actively working towards becoming a Senior Full
@@ -75,9 +94,22 @@ const Bio = forwardRef(({ id, currentVisibleSection }:props, ref:Ref<HTMLDivElem
             </p>
           </div>
         </div>
-        <div className="flex justify-center items-center mt-5 ">
-          <Social />
+        <div 
+          className="flex justify-center items-center mt-5"
+        >
         </div>
+         <img
+            src={code}
+            className="hidden md:max-w-[700px] md:float-left md:mr-10 md:flex "
+            alt="Omar Aidi"
+          />
+          <div className="md:hidden flex flex-col items-center mb-3">
+            <img
+              src={code}
+              className="w-96 sm:w-44 md:w-52  md:float-right md:ml-6 "
+              alt="Omar Aidi"
+            />
+          </div>
       </motion.div>
     </section>
   );

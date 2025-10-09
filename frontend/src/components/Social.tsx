@@ -35,7 +35,7 @@ export default function Social() {
       className="flex flex-col items-center justify-center w-full"
     >
       <div 
-        className="grid grid-cols-3 md:grid-cols-4 md:ml-96"
+        className="grid grid-cols-3 md:grid-cols-4 md:mr-32"
       >
         <Icon
           img={gmail}

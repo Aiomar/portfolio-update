@@ -96,18 +96,18 @@ export default function App() {
         id="about"
         currentVisibleSection={currentVisibleSection}
       />
-      <Projects
-        ref={(el: HTMLDivElement | null) => {
-          sectionsRefs.current[1] = el;
-        }}
-        id="projects"
-        currentVisibleSection={currentVisibleSection}
-      />
       <Resume
         ref={(el: HTMLDivElement | null) => {
           sectionsRefs.current[2] = el;
         }}
         id="resume"
+        currentVisibleSection={currentVisibleSection}
+      />
+      <Projects
+        ref={(el: HTMLDivElement | null) => {
+          sectionsRefs.current[1] = el;
+        }}
+        id="projects"
         currentVisibleSection={currentVisibleSection}
       />
       <Contact
