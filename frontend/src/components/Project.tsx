@@ -7,7 +7,7 @@ export default function Project({ title, img, details, link, status, repo }: pro
     >
       <div
         className="max-w-sm h-[450px] max-h-[500px]  p-3 bg-white
-        dark:bg-gray-800 hover:bg-gray-100 border-2 dark:border-gray-500
+        dark:bg-gray-800 hover:bg-gray-100 border-2 border-gray-300 dark:border-gray-500
         shadow-sm shadow-gray-300 dark:shadow-gray-600
         rounded-3xl dark:hover:bg-gray-700 hover:shadow-md"
       >
