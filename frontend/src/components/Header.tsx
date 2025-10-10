@@ -62,9 +62,9 @@ export default function Header(
             onClick={updateTheme}
           >
             {theme === 'dark' ? (
-              <Moon size={20} />
+              <Sun color="white"size={25} />
             ) : (
-              <Sun className="text-white" size={25} />
+              <Moon size={25} />
             )}
           </button>
         </div>

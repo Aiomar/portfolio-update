@@ -21,6 +21,8 @@ export default function App() {
      localStorage.setItem("theme", theme)
      if (theme === 'dark') {
       document.documentElement.classList.add(theme)
+     }else{
+      document.documentElement.classList.remove("dark")
      }
     },
     [theme]
