@@ -2,9 +2,7 @@ import logo from '../assets/logo.svg'
 
 export default function Footer() {
   return (
-    <footer 
-      className="bg-slate-100 shadow-sm dark:bg-gray-900 "
-    >
+    <footer>
       <div 
         className="w-full max-w-screen-xl mx-auto p-4 md:py-8"
       >
@@ -22,7 +20,7 @@ export default function Footer() {
           </a>
           <ul 
             className="flex flex-wrap items-center mb-6 text-sm 
-            text-gray-500 sm:mb-0 dark:text-gray-400 font-medium">
+            text-gray-600 sm:mb-0 dark:text-gray-300 font-medium">
             <li>
               <a 
                 href="#about" 
