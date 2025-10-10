@@ -153,11 +153,11 @@ const Resume = forwardRef (
             <p className="mt-2 dark:text-gray-300 font-semibold text-xl">
               Omar Aidi
             </p>            
-             <p className="mt-2 dark:text-gray-400 font-semibold text-md">
+             <p className="mt-2 text-gray-600 dark:text-gray-400 font-semibold text-md">
               Full-Stack Developer & CS Student
             </p>
             <button
-              className="flex flex-row mt-5 dark:bg-blue-400 
+              className="flex flex-row mt-5 bg-blue-400 
               hover:dark:bg-blue-500 p-2 rounded-xl"
             >
               <Download className="mr-2"/>

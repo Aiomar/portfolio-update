@@ -1,8 +1,6 @@
 import { useEffect, forwardRef } from "react";
 import { motion, useAnimation } from "motion/react";
 import type { Ref } from "react";
-import Social from "../components/Social";
-import profile from '../assets/profile.jpg'
 import code from '../assets/Code.svg'
 
 type props = {
@@ -61,7 +59,7 @@ const Bio = forwardRef(({ id, currentVisibleSection }:props, ref:Ref<HTMLDivElem
               className="flex flex-row"
             >
               <h1 
-                className="mt-1 text-white md:text-3xl sm:text-xl font-bold text-2xl"
+                className="mt-1 dark:text-white md:text-3xl sm:text-xl font-bold text-2xl"
               >
                 Omar 
               </h1>
@@ -74,7 +72,7 @@ const Bio = forwardRef(({ id, currentVisibleSection }:props, ref:Ref<HTMLDivElem
             </div>
            
             <p 
-              className="mt-2 text-gray-500 md:text-2xl
+              className="mt-2 dark:text-gray-500 md:text-2xl
               sm:text-xl text-2xl"
             >
               Full-Stack Developer & CS Student
@@ -82,10 +80,10 @@ const Bio = forwardRef(({ id, currentVisibleSection }:props, ref:Ref<HTMLDivElem
           </div>
           <div 
             className="mt-2 text-lg sm:text-base md:text-md 
-            dark:text-gray-300 leading-relaxed text-wrap w-96"
+            leading-relaxed text-wrap w-96"
           >
             <p 
-              className="text-gray-300"
+              className="text-gray-700 dark:text-gray-300"
             >
               19 years old Computer Science Student at ISIGK I’m currently a
               junior Full Stack Web Developer looking for great work
