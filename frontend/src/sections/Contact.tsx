@@ -133,7 +133,7 @@ const Contact = forwardRef(({ id, currentVisibleSection }:props, ref: Ref<HTMLDi
           </div>
           <button
             type="submit"
-            className="w-full px-4 py-2 text-white bg-sky-700 rounded-md hover:bg-sky-600 focus:outline-none"
+            className="w-full px-4 py-2 text-white bg-sky-500 dark:bg-sky-700 rounded-md hover:bg-sky-600 focus:outline-none"
           >
             <p className="flex flex-row items-center justify-center">
               <Send className="mr-1 " /> Submit
