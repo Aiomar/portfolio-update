@@ -97,6 +97,7 @@ export default function App() {
         }}
         id="about"
         currentVisibleSection={currentVisibleSection}
+        theme={theme}
       />
       <Resume
         ref={(el: HTMLDivElement | null) => {
@@ -127,7 +128,7 @@ export default function App() {
               className="flex items-center justify-center rounded-full w-12 h-12 bg-sky-400
             over:bg-sky-300 transition-shadow shadow-md hover:scale-105"
             >
-              <ArrowUpCircle size={20} className="text-white dark:text-black" />
+              <ArrowUpCircle size={50} className="text-white dark:text-gray-900" />
             </button>
           </a>
         </div>

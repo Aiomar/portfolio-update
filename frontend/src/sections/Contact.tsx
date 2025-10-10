@@ -29,7 +29,7 @@ const Contact = forwardRef(({ id, currentVisibleSection }:props, ref: Ref<HTMLDi
     <section
       id={id}
       ref={ref}
-      className="flex flex-col justify-center items-center bg-slate-100 dark:bg-gray-900  w-full h-screen md:p-20"
+      className="flex flex-col justify-center items-center w-full h-screen md:p-20"
     >
       <motion.div
         ref={ref}

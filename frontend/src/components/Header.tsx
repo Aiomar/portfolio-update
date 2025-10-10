@@ -7,11 +7,11 @@ export default function Header(
   return (
     <header
       className="flex md:flex-row md:justify-center fixed right-0 left-0 z-50 
-      max-h-96 w-full bg-slate-100 dark:bg-gray-900"
+      max-h-96 w-full bg-gray-50 dark:bg-gray-900"
     >
       <nav
         className="flex md:justify-center md:ml-0 w-full px-4 min-h-24
-        bg-slate-100 dark:bg-gray-900 lg:px-6 py-2.5"
+       lg:px-6 py-2.5"
       >
         <div 
           className="flex items-center lg:order-2"

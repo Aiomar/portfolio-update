@@ -1,14 +1,17 @@
 import { useEffect, forwardRef } from "react";
 import { motion, useAnimation } from "motion/react";
 import type { Ref } from "react";
-import code from '../assets/Code.svg'
+import codedark from '../assets/codedark.svg'
+import codelight from '../assets/codelight.svg'
+import { div } from "motion/react-client";
 
 type props = {
   id: string;
   currentVisibleSection: string;
+  theme: string;
 }
 
-const Bio = forwardRef(({ id, currentVisibleSection }:props, ref:Ref<HTMLDivElement | null>) => {
+const Bio = forwardRef(({ id, currentVisibleSection, theme }:props, ref:Ref<HTMLDivElement | null>) => {
   const motionVariants = {
     hidden: { opacity: 0, y: 75 },
     visible: { opacity: 1, y: 0 },
@@ -95,18 +98,45 @@ const Bio = forwardRef(({ id, currentVisibleSection }:props, ref:Ref<HTMLDivElem
           className="flex justify-center items-center mt-5"
         >
         </div>
-         <img
-            src={code}
-            className="hidden md:max-w-[700px] md:float-left md:mr-10 md:flex "
-            alt="Omar Aidi"
-          />
-          <div className="md:hidden flex flex-col items-center mb-3">
-            <img
-              src={code}
-              className="w-96 sm:w-44 md:w-52  md:float-right md:ml-6 "
-              alt="Omar Aidi"
-            />
-          </div>
+        {
+          theme === 'dark'? 
+          (  
+            <>
+              <img
+                src={codedark}
+                className="hidden md:max-w-[700px] md:float-left md:mr-10 md:flex "
+                alt="Omar Aidi"
+              />
+              <div className="md:hidden flex flex-col items-center mb-3">
+                <img
+                  src={codedark}
+                  className="w-96 sm:w-44 md:w-52  md:float-right md:ml-6 "
+                  alt="Omar Aidi"
+                />
+              </div>
+            </>
+          )
+          :
+          ( 
+            <>
+             <img
+                src={codelight}
+                className="hidden md:max-w-[700px] md:float-left md:mr-10 md:flex "
+                alt="Omar Aidi"
+              />
+              <div 
+                className="md:hidden flex flex-col items-center mb-3"
+              >
+                <img
+                  src={codelight}
+                  className="w-96 sm:w-44 md:w-52  md:float-right md:ml-6 "
+                  alt="Omar Aidi"
+                />
+              </div>
+            </>
+           )
+        }
+       
       </motion.div>
     </section>
   );
