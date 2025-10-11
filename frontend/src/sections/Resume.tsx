@@ -1,9 +1,8 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/Card";
 import type { Ref } from "react";
-import {forwardRef, useEffect} from "react";
+import {forwardRef, useEffect, useState} from "react";
 import { motion, useAnimation } from "motion/react";
-import profile from '../assets/profile.jpg'
-import { Download } from "lucide-react";
+import Profile from "../components/Profile";
 
 const skillsData = {
   frontend: ["HTML/CSS", "JavaScript", "TypeScript", "React", "Vue.js", "Tailwind CSS", "Material UI"],
@@ -22,16 +21,29 @@ const Resume = forwardRef (
   const mainControls = useAnimation();
 
    useEffect(() => {
-      if (currentVisibleSection === "projects") {
+      if (currentVisibleSection === "resume") {
         mainControls.start("visible");
       }
     }, [currentVisibleSection, mainControls]);
+
+  // verifiy if the screen is mobile width to show profile on top of resume cards
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <section 
       id={id} 
       ref={ref}
-      className="flex flex-col items-center justify-center w-full h-screen"
+      className="flex flex-col items-center justify-center
+      w-full min-h-screen"
     >
       <motion.div
         ref={ref}
@@ -45,7 +57,8 @@ const Resume = forwardRef (
           className="flex flex-col items-center text-center mb-12"
         >
           <h2 
-            className="text-3xl font-bold tracking-tight md:text-4xl dark:text-white"
+            className="text-3xl font-bold tracking-tight 
+            md:text-4xl dark:text-white"
           >
              Resume & Skills 
           </h2>
@@ -56,9 +69,9 @@ const Resume = forwardRef (
           </p>
         </div>
         <div
-          className="flex flex-row items-center justify-center"
+          className="flex flex-col md:flex-row items-center justify-center"
         >
-          
+          {isMobile&& <Profile/>}
           <div 
             className="grid grid-cols-1 md:grid-cols-2  gap-5"
           >
@@ -130,42 +143,8 @@ const Resume = forwardRef (
               </CardContent>
             </Card>
           </div>
-          <div 
-            className="flex flex-col items-center bg-white dark:bg-gray-800 border 
-            border-gray-200 rounded-xl shadow-sm hover:shadow-md p-4 h-96
-            transition-shadow dark:shadow-blue-200 duration-300 w-96 ml-20"
-          >
-            <img
-              src={profile}
-              className="hidden md:w-50 rounded-full md:float-left  md:flex "
-              alt="Omar Aidi"
-            />
-            <div 
-              className="md:hidden flex flex-col items-center mb-3"
-            >
-              <img
-                src={profile}
-                className="rounded-full w-36 sm:w-44 md:w-52
-                md:float-right md:ml-6"
-                alt="Omar Aidi"
-              />
-          </div>
-            <p className="mt-2 dark:text-gray-300 font-semibold text-xl">
-              Omar Aidi
-            </p>            
-             <p className="mt-2 text-gray-600 dark:text-gray-400 font-semibold text-md">
-              Full-Stack Developer & CS Student
-            </p>
-            <button
-              className="flex flex-row mt-5 bg-blue-400 
-              hover:dark:bg-blue-500 p-2 rounded-xl"
-            >
-              <Download className="mr-2"/>
-              Download Resume
-            </button>
+          {!isMobile&& <Profile/>}
         </div>
-        </div>
-        
       </motion.div>
     </section>
   );

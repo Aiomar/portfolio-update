@@ -2,7 +2,7 @@ export function Card({ children }: { children: React.ReactNode }) {
   return (
     <div 
       className="flex flex-col bg-white dark:bg-gray-800 border border-gray-200 rounded-xl shadow-sm 
-      hover:shadow-md transition-shadow dark:shadow-blue-200  duration-300 w-96"
+      hover:shadow-md transition-shadow dark:shadow-blue-200  duration-300 w-80 h-50 md:w-96"
     >
       {children}
     </div>

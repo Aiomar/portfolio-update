@@ -3,7 +3,6 @@ import { motion, useAnimation } from "motion/react";
 import type { Ref } from "react";
 import codedark from '../assets/codedark.svg'
 import codelight from '../assets/codelight.svg'
-import { div } from "motion/react-client";
 
 type props = {
   id: string;
@@ -33,13 +32,13 @@ const Bio = forwardRef(({ id, currentVisibleSection, theme }:props, ref:Ref<HTML
     >
       <motion.div
         ref={ref}
-        className="flex mt-40 w-full max-w-5xl"
+        className="flex flex-col md:flex-row mt-40 w-full max-w-5xl"
         variants={motionVariants}
         initial="hidden"
         animate={mainControls}
         transition={{ duration: 0.5, delay: 0.25 }}
       >
-        <div className="flex flex-col ">
+        <div className="flex flex-col">
           <div className="flex items-center flex-col  md:items-start md:mt-20">
              <div 
               className="flex flex-row"

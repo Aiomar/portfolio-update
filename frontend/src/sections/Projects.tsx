@@ -4,6 +4,9 @@ import { motion, useAnimation } from "motion/react";
 import type {Ref} from 'react'
 
 const Projects = forwardRef(({ id, currentVisibleSection }:props, ref:Ref<HTMLDivElement>) => {
+
+  
+
 const projects = [
   {
     title: "PADZONE E-Commerce Platform",
