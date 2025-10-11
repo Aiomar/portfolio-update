@@ -73,7 +73,8 @@ const projects = [
     <section
       id={id}
       ref={ref}
-      className="w-full md:min-h-screen md:max-h-fit flex justify-center items-center flex-col"
+      className="w-full md:min-h-screen md:max-h-fit flex 
+      justify-center items-center flex-col"
     >
       <motion.div
         ref={ref}
@@ -82,7 +83,9 @@ const projects = [
         animate={mainControls}
         transition={{ duration: 0.5, delay: 0.5 }}
       >
-        <div className="flex justify-center items-center ml-5 md:mt-5 mt-10">
+        <div 
+          className="flex justify-center items-center ml-5 md:mt-5 mt-20"
+        >
           <h5 className="mb-10 text-5xl font-semibold text-gray-900 dark:text-white">
             Projects
           </h5>

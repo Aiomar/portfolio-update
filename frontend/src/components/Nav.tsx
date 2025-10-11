@@ -19,8 +19,8 @@ export default function Nav({ currentVisibleSection }:props) {
             href="#about"
             className={
               currentVisibleSection === "about"
-                ? "block py-2 pr-4 pl-3 text-sky-500 lg:hover:bg-transparent lg:border-0 lg:p-0"
-                : "block py-2 pr-4 pl-3  hover:text-sky-500 dark:text-white  dark:hover:text-sky-500 lg:hover:bg-transparent lg:border-0 lg:p-0"
+                ? "block py-2 pr-4 pl-3 text-sky-400 lg:hover:bg-transparent lg:border-0 lg:p-0"
+                : "block py-2 pr-4 pl-3 hover:text-sky-400 dark:text-white  dark:hover:text-sky-300 lg:hover:bg-transparent lg:border-0 lg:p-0"
             }
             aria-current="page"
             title="about me and social accounts"
@@ -42,8 +42,8 @@ export default function Nav({ currentVisibleSection }:props) {
             href="#resume"
             className={
               currentVisibleSection === "resume"
-                ? "block py-2 pr-4 pl-3 text-sky-500 lg:hover:bg-transparent lg:border-0 lg:p-0"
-                : "block py-2 pr-4 pl-3  hover:text-sky-500 dark:text-white  dark:hover:text-sky-500 lg:hover:bg-transparent lg:border-0 lg:p-0"
+                 ? "block py-2 pr-4 pl-3 text-sky-400 lg:hover:bg-transparent lg:border-0 lg:p-0"
+                : "block py-2 pr-4 pl-3 hover:text-sky-400 dark:text-white  dark:hover:text-sky-300 lg:hover:bg-transparent lg:border-0 lg:p-0"
             }
             title="more about my carear"
           >
@@ -59,8 +59,8 @@ export default function Nav({ currentVisibleSection }:props) {
             href="#projects"
             className={
               currentVisibleSection === "projects"
-                ? "block py-2 pr-4 pl-3 text-sky-500  lg:hover:bg-transparent lg:border-0 lg:p-0"
-                : "block py-2 pr-4 pl-3  hover:text-sky-500 dark:text-white  dark:hover:text-sky-500 lg:hover:bg-transparent lg:border-0 lg:p-0"
+                ? "block py-2 pr-4 pl-3 text-sky-400 lg:hover:bg-transparent lg:border-0 lg:p-0"
+                : "block py-2 pr-4 pl-3 hover:text-sky-400 dark:text-white  dark:hover:text-sky-300 lg:hover:bg-transparent lg:border-0 lg:p-0"
             }
             title="checkout some of my work"
           >
@@ -76,8 +76,8 @@ export default function Nav({ currentVisibleSection }:props) {
             href="#contact"
             className={
               currentVisibleSection === "contact"
-                ? "block py-2 pr-4 pl-3 text-sky-500 lg:hover:bg-transparent lg:border-0 lg:p-0"
-                : "block py-2 pr-4 pl-3  hover:text-sky-500 dark:text-white  dark:hover:text-sky-500 lg:hover:bg-transparent lg:border-0 lg:p-0"
+                ? "block py-2 pr-4 pl-3 text-sky-400 lg:hover:bg-transparent lg:border-0 lg:p-0"
+                : "block py-2 pr-4 pl-3 hover:text-sky-400 dark:text-white  dark:hover:text-sky-300 lg:hover:bg-transparent lg:border-0 lg:p-0"
             }
           >
             <div className="flex md:justify-center items-center">
