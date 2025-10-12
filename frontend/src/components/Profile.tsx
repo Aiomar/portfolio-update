@@ -5,7 +5,7 @@ export default function Profile() {
   return(
   <div 
     className="flex flex-col items-center bg-white dark:bg-gray-800 border 
-    border-gray-200 rounded-xl shadow-sm hover:shadow-md p-4 h-80 md:h-96
+    border-gray-200 rounded-xl shadow-sm hover:shadow-md p-4 h-96 md:h-96
     transition-shadow dark:shadow-blue-200 duration-300 mb-4 md:mb-0 w-80  md:w-96 md:ml-20"
   >
     <img

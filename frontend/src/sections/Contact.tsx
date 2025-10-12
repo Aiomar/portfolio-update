@@ -1,4 +1,4 @@
-import { useEffect, forwardRef } from "react";
+import React, { useEffect, forwardRef } from "react";
 import { motion, useAnimation } from "motion/react";
 import type { Ref } from "react";
 import { Send } from "lucide-react";
@@ -12,7 +12,7 @@ const Contact = forwardRef(({ id, currentVisibleSection }:props, ref: Ref<HTMLDi
 
   const mainControls = useAnimation();
   useEffect(() => {
-    if (currentVisibleSection == "contact") {
+    if (currentVisibleSection === "contact") {
       mainControls.start("visible");
     }
   }, [currentVisibleSection, mainControls]);
@@ -25,12 +25,35 @@ const Contact = forwardRef(({ id, currentVisibleSection }:props, ref: Ref<HTMLDi
     }
   };
 
+  // fetch api that submit Contact form
+  const submitForm = async (e:React.FormEvent) =>{
+    e.preventDefault();
+    try {
+      const res = await fetch("http://localhost:3000/contact")
+      if (!res.ok) {
+        throw new Error("Cannot Submit Form!");
+      }
+
+    } catch (err) {
+      if (err instanceof Error) {
+        
+      }
+    }
+  }
+
   return (
     <section
       id={id}
       ref={ref}
-      className="flex flex-col justify-center items-center w-full h-screen md:p-20"
+      className="flex flex-col justify-center items-center w-full min-h-screen md:p-20"
+      
     >
+      <h2 
+        className="text-3xl font-bold tracking-tight 
+        md:text-4xl dark:text-white"
+      >
+        Contact 
+      </h2>
       <motion.div
         ref={ref}
         variants={motionVariants}
@@ -39,9 +62,8 @@ const Contact = forwardRef(({ id, currentVisibleSection }:props, ref: Ref<HTMLDi
         transition={{ duration: 0.5, delay: 0.5 }}
       >
         <form
-          action="https://portfolio-8dam.onrender.com/suggestion"
-          method="post"
-          className="w-full  p-10 rounded-2xl mb-4 "
+          onSubmit={submitForm}
+          className="w-full  p-5 rounded-2xl mb-4 "
         >
           <div className="mb-4 w-full">
             <label

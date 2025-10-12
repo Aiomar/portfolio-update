@@ -18,6 +18,7 @@ export default function Footer() {
               className="h-8" alt="Flowbite Logo" 
             />
           </a>
+          
           <ul 
             className="flex flex-wrap items-center mb-6 text-sm 
             text-gray-600 sm:mb-0 dark:text-gray-300 font-medium">

@@ -125,8 +125,10 @@ export default function App() {
         <div className="z-50 fixed bottom-20 right-7 md:bottom-5 md:right-10">
           <a href="#about">
             <button
-              className="flex items-center justify-center rounded-full w-12 h-12 bg-sky-400
-              over:bg-sky-300 transition-shadow shadow-md hover:scale-105 dark:hover:shadow-gray-700 
+              className="flex items-center justify-center 
+              rounded-full w-12 h-12 bg-sky-400
+              over:bg-sky-300 transition-shadow shadow-md 
+              hover:scale-105 dark:hover:shadow-gray-700 
               hover:shadow-gray-500"
             >
               <ArrowUpCircle 

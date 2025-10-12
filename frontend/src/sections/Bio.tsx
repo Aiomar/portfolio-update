@@ -93,10 +93,6 @@ const Bio = forwardRef(({ id, currentVisibleSection, theme }:props, ref:Ref<HTML
             </p>
           </div>
         </div>
-        <div 
-          className="flex justify-center items-center mt-5"
-        >
-        </div>
         {
           theme === 'dark'? 
           (  
@@ -135,7 +131,7 @@ const Bio = forwardRef(({ id, currentVisibleSection, theme }:props, ref:Ref<HTML
             </>
            )
         }
-       
+
       </motion.div>
     </section>
   );

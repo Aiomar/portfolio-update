@@ -32,10 +32,10 @@ export default function Social() {
       initial="hidden"
       animate={mainControlls}
       transition={{ duration: 0.5, delay: 0.25 }}
-      className="flex flex-col items-center justify-center w-full"
+      className="flex flex-col items-center justify-center w-fit mt-2"
     >
       <div 
-        className="grid grid-cols-3 md:grid-cols-4 md:mr-32"
+        className="grid grid-cols-6 md:grid-cols-6"
       >
         <Icon
           img={gmail}
