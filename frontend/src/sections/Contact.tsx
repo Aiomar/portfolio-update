@@ -3,7 +3,7 @@ import { motion, useAnimation } from "motion/react";
 import type { Ref } from "react";
 import { Send } from "lucide-react";
 
-const Contact = forwardRef(({ id, currentVisibleSection }:props, ref: Ref<HTMLDivElement | null>) => {
+const Contact = forwardRef(({ id, currentVisibleSection, setMessage, setError }:props, ref: Ref<HTMLDivElement | null>) => {
   //On Scroll Animation
   const motionVariants = {
     hidden: { opacity: 0, y: 75 },
@@ -53,10 +53,10 @@ const Contact = forwardRef(({ id, currentVisibleSection }:props, ref: Ref<HTMLDi
       if (!res.ok) {
         throw new Error("Cannot Submit Form!");
       }
-
+      setMessage("It will be a pleasure working with you"+String(FormData.name))
     } catch (err) {
       if (err instanceof Error) {
-        console.error("Contact Form Error: " + err.message)
+        setError("Form is not submitted check connection");
       }
     }
   }
@@ -99,9 +99,10 @@ const Contact = forwardRef(({ id, currentVisibleSection }:props, ref: Ref<HTMLDi
               id="name"
               name="name"
               onChange={handleFormChange}
-              className="w-full px-5 py-2 mt-2 border border-gray-500 rounded-md focus:outline-none  focus:border-none 
-                focus:ring-2 focus:ring-sky-500 roboto-regular dark:bg-slate-800 
-              dark:placeholder:text-gray-200 text-black dark:text-white"
+              className="w-full px-5 py-2 mt-2 border border-gray-500 rounded-md 
+              focus:outline-none  focus:border-none focus:ring-2 focus:ring-sky-500
+              roboto-regular dark:bg-slate-800 dark:placeholder:text-gray-200
+              text-black dark:text-white"
               placeholder="Enter your Name"
               value={formData.name}
               required
@@ -145,8 +146,8 @@ const Contact = forwardRef(({ id, currentVisibleSection }:props, ref: Ref<HTMLDi
               value={formData.email}
               onChange={handleFormChange}
               className="w-full px-5 py-2 mt-2 border border-gray-500 rounded-md focus:outline-none  
-                focus:border-none  focus:ring-2 focus:ring-sky-500 dark:bg-slate-800 dark:placeholder:text-gray-200
-                text-black"
+              focus:border-none  focus:ring-2 focus:ring-sky-500 dark:bg-slate-800
+              dark:placeholder:text-gray-200 text-black dark:text-white"
               placeholder="Enter your email"
               required
             />
@@ -165,9 +166,10 @@ const Contact = forwardRef(({ id, currentVisibleSection }:props, ref: Ref<HTMLDi
               value={formData.message}
               onChange={handleFormChange}
               rows={4}
-              className="w-full px-5 py-2 mt-2 border border-gray-500 rounded-md focus:outline-none focus:border-none
-              focus:ring-2 roboto-regular focus:ring-sky-500 dark:bg-slate-800 
-              dark:placeholder:text-gray-200 text-black  dark:text-white max-h-28"
+              className="w-full px-5 py-2 mt-2 border border-gray-500 rounded-md 
+              focus:outline-none focus:border-none focus:ring-2 roboto-regular
+              focus:ring-sky-500 dark:bg-slate-800 dark:placeholder:text-gray-200
+              text-black  dark:text-white max-h-28"
               placeholder="Enter your message"
               required
             ></textarea>
@@ -201,6 +203,8 @@ const Contact = forwardRef(({ id, currentVisibleSection }:props, ref: Ref<HTMLDi
 type props = {
   id: string;
   currentVisibleSection : string;
+  setMessage: React.Dispatch<React.SetStateAction<string>>;
+  setError: React.Dispatch<React.SetStateAction<string>>;
 }
 
 Contact.displayName = "Form";

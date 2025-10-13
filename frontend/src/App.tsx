@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from "react"
 import { ArrowUpCircle } from "lucide-react";
+import { toast } from 'react-toastify';
 // sections
 import Bio from "./sections/Bio";
 import Projects from "./sections/Projects";
@@ -69,6 +70,38 @@ export default function App() {
 
   const showTopScroll = currentVisibleSection !== "about";
 
+  // messages submit with react toast & error handling
+  const [message, setMessage] = useState<string>("");
+  const [error, setError] = useState<string>("")
+  useEffect(()=>{
+    if (error) {
+        toast.error(error, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: theme,
+        });
+      }else if (message){
+        toast.success(message, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: theme,
+        });
+      }
+      setError("");
+      setMessage("");
+  },[message, error])
+
+
   return (
     <div 
       className="w-full h-screen max-h-fit relative 
@@ -119,6 +152,8 @@ export default function App() {
         }}
         id="contact"
         currentVisibleSection={currentVisibleSection}
+        setMessage = {setMessage}
+        setError = {setError}
       />
       <Footer />
       {showTopScroll && (
@@ -139,6 +174,9 @@ export default function App() {
           </a>
         </div>
       )}
+      {
+        
+      }
     </div>
   );
 }
