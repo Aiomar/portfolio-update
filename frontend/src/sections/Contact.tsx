@@ -1,4 +1,4 @@
-import React, { useEffect, forwardRef } from "react";
+import React, { useEffect, forwardRef, useState } from "react";
 import { motion, useAnimation } from "motion/react";
 import type { Ref } from "react";
 import { Send } from "lucide-react";
@@ -17,26 +17,46 @@ const Contact = forwardRef(({ id, currentVisibleSection }:props, ref: Ref<HTMLDi
     }
   }, [currentVisibleSection, mainControls]);
 
-  //* add tn code
+  // add tn phone numebr code to phone input
   const updatePhone = () => {
     const phoneInput: HTMLInputElement | null = document.getElementById("phone") as HTMLInputElement;
     if (phoneInput) {
       phoneInput.value = "+216 ";
     }
   };
+  
+  //handling form data retreving
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    message: "",
+  });
 
+  const handleFormChange = (e:React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>)=>{
+    const {name, value} = e.target;
+    setFormData((prev) =>({...prev, [name]: value}));
+  }
+
+  //*API
   // fetch api that submit Contact form
-  const submitForm = async (e:React.FormEvent) =>{
+  const submitForm = async (e:React.FormEvent<HTMLFormElement>) =>{
     e.preventDefault();
     try {
-      const res = await fetch("http://localhost:3000/contact")
+      const res = await fetch('http://localhost:3000/contact',{
+        method:"POST",
+        headers:{
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
       if (!res.ok) {
         throw new Error("Cannot Submit Form!");
       }
 
     } catch (err) {
       if (err instanceof Error) {
-        
+        console.error("Contact Form Error: " + err.message)
       }
     }
   }
@@ -67,7 +87,7 @@ const Contact = forwardRef(({ id, currentVisibleSection }:props, ref: Ref<HTMLDi
         >
           <div className="mb-4 w-full">
             <label
-              htmlFor="fullName"
+              htmlFor="name"
               className="block text-sm font-medium dark:text-white"
             >
               <div className="flex items-center">
@@ -76,18 +96,20 @@ const Contact = forwardRef(({ id, currentVisibleSection }:props, ref: Ref<HTMLDi
             </label>
             <input
               type="text"
-              id="fullName"
-              name="fullName"
+              id="name"
+              name="name"
+              onChange={handleFormChange}
               className="w-full px-5 py-2 mt-2 border border-gray-500 rounded-md focus:outline-none  focus:border-none 
                 focus:ring-2 focus:ring-sky-500 roboto-regular dark:bg-slate-800 
               dark:placeholder:text-gray-200 text-black dark:text-white"
               placeholder="Enter your Name"
+              value={formData.name}
               required
             />
           </div>
           <div className="mb-4">
             <label
-              htmlFor="email"
+              htmlFor="phone"
               className="block text-sm font-medium dark:text-white"
             >
               <p className="ml-1 roboto-regular">PHONE NUMBER</p>
@@ -97,11 +119,13 @@ const Contact = forwardRef(({ id, currentVisibleSection }:props, ref: Ref<HTMLDi
                 type="tel"
                 id="phone"
                 name="phone"
+                onChange={handleFormChange}
                 className="w-full px-5 py-2 mt-2 border border-gray-500 rounded-md focus:outline-none  
                 focus:border-none focus:ring-2 focus:ring-sky-500 roboto-regular dark:bg-slate-800
                 dark:placeholder:text-gray-200 text-black  dark:text-white"
                 required
                 placeholder="+216"
+                value={formData.phone}
                 onClick={updatePhone}
               />
             </div>
@@ -118,6 +142,8 @@ const Contact = forwardRef(({ id, currentVisibleSection }:props, ref: Ref<HTMLDi
               type="email"
               id="email"
               name="email"
+              value={formData.email}
+              onChange={handleFormChange}
               className="w-full px-5 py-2 mt-2 border border-gray-500 rounded-md focus:outline-none  
                 focus:border-none  focus:ring-2 focus:ring-sky-500 dark:bg-slate-800 dark:placeholder:text-gray-200
                 text-black"
@@ -136,6 +162,8 @@ const Contact = forwardRef(({ id, currentVisibleSection }:props, ref: Ref<HTMLDi
             <textarea
               id="message"
               name="message"
+              value={formData.message}
+              onChange={handleFormChange}
               rows={4}
               className="w-full px-5 py-2 mt-2 border border-gray-500 rounded-md focus:outline-none focus:border-none
               focus:ring-2 roboto-regular focus:ring-sky-500 dark:bg-slate-800 
@@ -155,9 +183,12 @@ const Contact = forwardRef(({ id, currentVisibleSection }:props, ref: Ref<HTMLDi
           </div>
           <button
             type="submit"
-            className="w-full px-4 py-2 text-white bg-sky-500 dark:bg-sky-700 rounded-md hover:bg-sky-600 focus:outline-none"
+            className="w-full px-4 py-2 text-white bg-sky-500 dark:bg-sky-700
+            rounded-md hover:bg-sky-600 focus:outline-none"
           >
-            <p className="flex flex-row items-center justify-center">
+            <p 
+              className="flex flex-row items-center justify-center"
+            >
               <Send className="mr-1 " /> Submit
             </p>
           </button>

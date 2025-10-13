@@ -30,7 +30,7 @@ export default function Project({ title, img, details, link, status, repo }: pro
         >
           {details}
         </p>
-        <p 
+        <span
           className="font-mono dark:text-white mt-2 mb-2 flex"
         >
           🚨Project Status &nbsp;
@@ -43,7 +43,7 @@ export default function Project({ title, img, details, link, status, repo }: pro
           >
             {status === "finished" ? "finished✅" : "Not yet❗"}{" "}
           </p>
-        </p>
+        </span>
         <div className="mb-2">
           <a
             href={repo}

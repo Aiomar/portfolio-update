@@ -4,8 +4,9 @@ import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  await app.listen(process.env.PORT ?? 3000);
+  app.enableCors();
   // this enable the class-validator npm package by using validation pipe  
   app.useGlobalPipes(new ValidationPipe()); 
+  await app.listen(process.env.PORT ?? 3000);
 }
 bootstrap();
