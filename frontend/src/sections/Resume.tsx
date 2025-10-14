@@ -5,10 +5,10 @@ import { motion, useAnimation } from "motion/react";
 import Profile from "../components/Profile";
 
 const skillsData = {
-  frontend: ["HTML/CSS", "JavaScript", "TypeScript", "React", "Vue.js", "Tailwind CSS", "Material UI"],
-  backend: ["Node.js", "Express", "Python", "Django", "RESTful APIs", "GraphQL"],
-  database: ["MongoDB", "PostgreSQL", "Firebase", "Redis"],
-  tools: ["Git", "Docker", "AWS", "Figma", "Adobe XD", "Webpack", "Vite"]
+  frontend: ["HTML/CSS/js", "TypeScript", "Vite/React", "Tailwind CSS"],
+  backend: ["Nest js","RESTful APIs"],
+  database: ["MongoDB", "MySql", "Redis"],
+  tools: ["Git", "Docker",]
 };
 
 const Resume = forwardRef (
