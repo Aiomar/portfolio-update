@@ -7,6 +7,7 @@ async function bootstrap() {
   app.enableCors();
   // this enable the class-validator npm package by using validation pipe  
   app.useGlobalPipes(new ValidationPipe()); 
-  await app.listen(process.env.PORT ?? 3000);
+  await app.listen(process.env.PORT ?? 3001);
+  console.log("=>LINK : http://localhost:"+process.env.PORT);
 }
 bootstrap();

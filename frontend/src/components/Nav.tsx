@@ -1,7 +1,11 @@
 import { Github } from "lucide-react";
 import logo from '../assets/logo.svg'
 
-export default function Nav({ currentVisibleSection }:props) {
+type props = {
+  currentVisibleSection: string;
+}
+
+export default function Nav(props:props) {
   return (
     <div className="flex flex-col md:flex-row">
       <img
@@ -18,7 +22,7 @@ export default function Nav({ currentVisibleSection }:props) {
           <a
             href="#about"
             className={
-              currentVisibleSection === "about"
+              props.currentVisibleSection === "about"
                 ? "block py-2 pr-4 pl-3 text-sky-400 lg:hover:bg-transparent lg:border-0 lg:p-0"
                 : "block py-2 pr-4 pl-3 hover:text-sky-400 dark:text-white  dark:hover:text-sky-300 lg:hover:bg-transparent lg:border-0 lg:p-0"
             }
@@ -41,7 +45,7 @@ export default function Nav({ currentVisibleSection }:props) {
           <a
             href="#resume"
             className={
-              currentVisibleSection === "resume"
+              props.currentVisibleSection === "resume"
                  ? "block py-2 pr-4 pl-3 text-sky-400 lg:hover:bg-transparent lg:border-0 lg:p-0"
                 : "block py-2 pr-4 pl-3 hover:text-sky-400 dark:text-white  dark:hover:text-sky-300 lg:hover:bg-transparent lg:border-0 lg:p-0"
             }
@@ -58,7 +62,7 @@ export default function Nav({ currentVisibleSection }:props) {
           <a
             href="#projects"
             className={
-              currentVisibleSection === "projects"
+              props.currentVisibleSection === "projects"
                 ? "block py-2 pr-4 pl-3 text-sky-400 lg:hover:bg-transparent lg:border-0 lg:p-0"
                 : "block py-2 pr-4 pl-3 hover:text-sky-400 dark:text-white  dark:hover:text-sky-300 lg:hover:bg-transparent lg:border-0 lg:p-0"
             }
@@ -75,7 +79,7 @@ export default function Nav({ currentVisibleSection }:props) {
           <a
             href="#contact"
             className={
-              currentVisibleSection === "contact"
+              props.currentVisibleSection === "contact"
                 ? "block py-2 pr-4 pl-3 text-sky-400 lg:hover:bg-transparent lg:border-0 lg:p-0"
                 : "block py-2 pr-4 pl-3 hover:text-sky-400 dark:text-white  dark:hover:text-sky-300 lg:hover:bg-transparent lg:border-0 lg:p-0"
             }
@@ -104,8 +108,4 @@ export default function Nav({ currentVisibleSection }:props) {
       </ul>
     </div>
   );
-}
-
-type props = {
-  currentVisibleSection: string;
 }

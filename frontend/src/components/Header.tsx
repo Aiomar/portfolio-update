@@ -1,9 +1,16 @@
 import { Moon, Sun, XCircle } from "lucide-react";
 import Nav from "./Nav";
 
-export default function Header(
-  {theme, updateTheme, toggleNavBar, isPhoneNavOpen, currentVisibleSection}:props
-){
+
+type props = {
+  theme : string;
+  updateTheme :()=>void;
+  toggleNavBar : ()=> void;
+  isPhoneNavOpen : boolean;
+  currentVisibleSection : string;
+}
+
+export default function Header(props:props){
   return (
     <header
       className="flex md:flex-row md:justify-center fixed right-0 left-0 z-50 
@@ -11,13 +18,13 @@ export default function Header(
     >
       <nav
         className="flex md:justify-center md:ml-0 w-full px-4 min-h-24
-       lg:px-6 py-2.5"
+        lg:px-6 py-2.5"
       >
         <div 
           className="flex items-center lg:order-2"
         >
           <button
-            onClick={toggleNavBar}
+            onClick={props.toggleNavBar}
             data-collapse-toggle="mobile-menu-2"
             type="button"
             className="inline-flex items-center p-2 ml-1 text-sm 
@@ -26,7 +33,7 @@ export default function Header(
             aria-expanded="false"
           >
             <span className="sr-only">Open main menu</span>
-            {isPhoneNavOpen ? (
+            {props.isPhoneNavOpen ? (
               <XCircle size={30} />
             ) : (
               <svg
@@ -51,7 +58,7 @@ export default function Header(
           lg:flex lg:w-auto lg:order-1"
           id="mobile-menu-2"
         >
-          <Nav currentVisibleSection={currentVisibleSection} />
+          <Nav currentVisibleSection={props.currentVisibleSection} />
         </div>
       </nav>
       <div className="flex flex-col justify-center items-center mr-5">
@@ -59,9 +66,9 @@ export default function Header(
           className="flex items-center justify-center"
         >
           <button 
-            onClick={updateTheme}
+            onClick={props.updateTheme}
           >
-            {theme === 'dark' ? (
+            {props.theme === 'dark' ? (
               <Sun color="white"size={25} />
             ) : (
               <Moon size={25} />
@@ -73,12 +80,5 @@ export default function Header(
   );
 };
 
-type props = {
-  theme : string;
-  updateTheme :()=>void;
-  toggleNavBar : ()=> void;
-  isPhoneNavOpen : boolean;
-  currentVisibleSection : string;
-}
 
 

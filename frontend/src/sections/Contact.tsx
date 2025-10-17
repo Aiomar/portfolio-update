@@ -3,7 +3,14 @@ import { motion, useAnimation } from "motion/react";
 import type { Ref } from "react";
 import { Send } from "lucide-react";
 
-const Contact = forwardRef(({ id, currentVisibleSection, setMessage, setError }:props, ref: Ref<HTMLDivElement | null>) => {
+type props = {
+  id: string;
+  currentVisibleSection : string;
+  setMessage: React.Dispatch<React.SetStateAction<string>>;
+  setError: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const Contact = forwardRef((props:props, ref: Ref<HTMLDivElement | null>) => {
   //On Scroll Animation
   const motionVariants = {
     hidden: { opacity: 0, y: 75 },
@@ -12,10 +19,10 @@ const Contact = forwardRef(({ id, currentVisibleSection, setMessage, setError }:
 
   const mainControls = useAnimation();
   useEffect(() => {
-    if (currentVisibleSection === "contact") {
+    if (props.currentVisibleSection === "contact") {
       mainControls.start("visible");
     }
-  }, [currentVisibleSection, mainControls]);
+  }, [props.currentVisibleSection, mainControls]);
 
   // add tn phone numebr code to phone input
   const updatePhone = () => {
@@ -43,7 +50,7 @@ const Contact = forwardRef(({ id, currentVisibleSection, setMessage, setError }:
   const submitForm = async (e:React.FormEvent<HTMLFormElement>) =>{
     e.preventDefault();
     try {
-      const res = await fetch('http://localhost:3000/contact',{
+      const res = await fetch('http://localhost:3001/contact',{
         method:"POST",
         headers:{
           "Content-Type": "application/json",
@@ -53,17 +60,17 @@ const Contact = forwardRef(({ id, currentVisibleSection, setMessage, setError }:
       if (!res.ok) {
         throw new Error("Cannot Submit Form!");
       }
-      setMessage("It will be a pleasure working with you"+String(FormData.name))
+      props.setMessage("It will be a pleasure working with you"+String(FormData.name))
     } catch (err) {
       if (err instanceof Error) {
-        setError("Form is not submitted check connection");
+        props.setError("Form is not submitted check connection");
       }
     }
   }
 
   return (
     <section
-      id={id}
+      id={props.id}
       ref={ref}
       className="flex flex-col justify-center items-center w-full min-h-screen md:p-20"
       
@@ -199,13 +206,6 @@ const Contact = forwardRef(({ id, currentVisibleSection, setMessage, setError }:
     </section>
   );
 });
-
-type props = {
-  id: string;
-  currentVisibleSection : string;
-  setMessage: React.Dispatch<React.SetStateAction<string>>;
-  setError: React.Dispatch<React.SetStateAction<string>>;
-}
 
 Contact.displayName = "Form";
 export default Contact;

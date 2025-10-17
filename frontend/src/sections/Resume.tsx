@@ -1,19 +1,22 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/Card";
-import type { Ref } from "react";
-import {forwardRef, useEffect, useState} from "react";
-import { motion, useAnimation } from "motion/react";
 import Profile from "../components/Profile";
+import {forwardRef, useEffect, useState} from "react";
+import type { Ref } from "react";
+import { motion, useAnimation } from "motion/react";
 
 const skillsData = {
-  frontend: ["HTML/CSS", "JavaScript", "TypeScript", "React", "Vue.js", "Tailwind CSS", "Material UI"],
-  backend: ["Node.js", "Express", "Python", "Django", "RESTful APIs", "GraphQL"],
-  database: ["MongoDB", "PostgreSQL", "Firebase", "Redis"],
-  tools: ["Git", "Docker", "AWS", "Figma", "Adobe XD", "Webpack", "Vite"]
+  frontend: ["HTML/CSS/js", "TypeScript", "Vite/React", "Tailwind CSS"],
+  backend: ["Nest js","RESTful APIs"],
+  database: ["MongoDB", "MySql", "Redis"],
+  tools: ["Git", "Docker",]
 };
 
-const Resume = forwardRef (
-  ({id, currentVisibleSection}: props, ref: Ref<HTMLDivElement | null>) => 
-{
+type props = {
+  id: string;
+  currentVisibleSection: string;
+}
+
+const Resume = forwardRef ((props: props, ref: Ref<HTMLDivElement | null>) => {
   const motionVariants = {
     hidden: { opacity: 0, y: 75 },
     visible: { opacity: 1, y: 0 },
@@ -21,10 +24,10 @@ const Resume = forwardRef (
   const mainControls = useAnimation();
 
    useEffect(() => {
-      if (currentVisibleSection === "resume") {
+      if (props.currentVisibleSection === "resume") {
         mainControls.start("visible");
       }
-    }, [currentVisibleSection, mainControls]);
+    }, [props.currentVisibleSection, mainControls]);
 
   // verifiy if the screen is mobile width to show profile on top of resume cards
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
@@ -40,7 +43,7 @@ const Resume = forwardRef (
 
   return (
     <section 
-      id={id} 
+      id={props.id} 
       ref={ref}
       className="flex flex-col items-center justify-center
       w-full min-h-screen"
@@ -149,12 +152,5 @@ const Resume = forwardRef (
     </section>
   );
 });
-
-
-type props = {
-  id: string;
-  currentVisibleSection: string;
-}
-
 Resume.displayName = 'Resume';
 export default Resume;

@@ -10,7 +10,7 @@ type props = {
   theme: string;
 }
 
-const Bio = forwardRef(({ id, currentVisibleSection, theme }:props, ref:Ref<HTMLDivElement | null>) => {
+const Bio = forwardRef((props:props, ref:Ref<HTMLDivElement | null>) => {
   const motionVariants = {
     hidden: { opacity: 0, y: 75 },
     visible: { opacity: 1, y: 0 },
@@ -19,14 +19,14 @@ const Bio = forwardRef(({ id, currentVisibleSection, theme }:props, ref:Ref<HTML
   const mainControls = useAnimation();
 
   useEffect(() => {
-    if (currentVisibleSection === "about") {
+    if (props.currentVisibleSection === "about") {
       mainControls.start("visible");
     }
-  }, [currentVisibleSection, mainControls]);
+  }, [props.currentVisibleSection, mainControls]);
 
   return (
     <section
-      id={id}
+      id={props.id}
       ref={ref}
       className="w-full h-screen flex flex-col items-center px-4"
     >
@@ -94,7 +94,7 @@ const Bio = forwardRef(({ id, currentVisibleSection, theme }:props, ref:Ref<HTML
           </div>
         </div>
         {
-          theme === 'dark'? 
+          props.theme === 'dark'? 
           (  
             <>
               <img
