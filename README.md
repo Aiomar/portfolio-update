@@ -27,19 +27,20 @@ It highlights my projects, technologies I use, and ways to get in touch with me.
 ## ⚙️ Installation
 
 Follow these steps to run the portfolio locally:
-# 1. Clone the repository
+### 1. Clone the repository
 git clone https://github.com/username/portfolio.git
 
-# 2. Navigate into the project folder
+#### 2. Navigate into the project folder
 cd portfolio
 
-# 3. Install dependencies
+### 3. Install dependencies
 npm install
 
-# 4. Start the development server
+### 4. Start the development server
 npm run dev
 
-##🗂️ Project Structure
+## 🗂️ Project Structure
+
 src/
  ├─ assets/          # Images and icons
  ├─ components/      # Reusable UI components
