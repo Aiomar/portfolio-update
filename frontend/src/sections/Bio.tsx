@@ -32,7 +32,7 @@ const Bio = forwardRef((props: props, ref: Ref<HTMLDivElement | null>) => {
     >
       <motion.div
         ref={ref}
-        className="mt-40 flex w-full flex-col items-center justify-center lg:flex-row"
+        className="mt-40 lg:mt-0 flex w-full flex-col items-center justify-center lg:flex-row"
         variants={motionVariants}
         initial="hidden"
         animate={mainControls}
