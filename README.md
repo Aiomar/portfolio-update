@@ -17,7 +17,9 @@ It highlights my projects, technologies I use, and ways to get in touch with me.
 - 📧 Contact form integration
 
 ## 🧰 Built With
-- **Frontend:** React, Tailwind CSS, Vite, Ts  
+- **Frontend:** React, Tailwind CSS, Vite, Ts
+- **Backend:** Nest js
+- **DB:** Mongo db via Atlas cluster
 - **Animations:** Framer Motion
 - **Icons** lucide react
 - **Hosting:** Vercel  
