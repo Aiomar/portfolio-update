@@ -41,12 +41,5 @@ npm install
 ### 4. Start the development server
 npm run dev
 
-## 🗂️ Project Structure
-
-src/
- ├─ assets/          # Images and icons
- ├─ components/      # Reusable UI components
- ├─ sections/        # Sections like About, Projects, Contact, etc.
- ├─ App.jsx          # Main app component
- ├─ main.jsx         # Entry point
- └─ index.css        # Global styles
+## 🗂️ Project Status 
+currently working on 
