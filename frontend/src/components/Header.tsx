@@ -1,34 +1,24 @@
 import { Moon, Sun, XCircle } from "lucide-react";
 import Nav from "./Nav";
 
-
 type props = {
-  theme : string;
-  updateTheme :()=>void;
-  toggleNavBar : ()=> void;
-  isPhoneNavOpen : boolean;
-  currentVisibleSection : string;
-}
+  theme: string;
+  updateTheme: () => void;
+  toggleNavBar: () => void;
+  isPhoneNavOpen: boolean;
+  currentVisibleSection: string;
+};
 
-export default function Header(props:props){
+export default function Header(props: props) {
   return (
-    <header
-      className="flex md:flex-row md:justify-center fixed right-0 left-0 z-50 
-      max-h-96 w-full bg-gray-50 dark:bg-gray-900"
-    >
-      <nav
-        className="flex md:justify-center md:ml-0 w-full px-4 min-h-24
-        lg:px-6 py-2.5"
-      >
-        <div 
-          className="flex items-center lg:order-2"
-        >
+    <header className="fixed right-0 left-0 z-50 flex max-h-96 w-full bg-gray-50 md:flex-row md:justify-center dark:bg-gray-900">
+      <div className="flex min-h-24 w-full px-4 py-2.5 lg:ml-0 lg:justify-center lg:px-6 order-03">
+        <div className="flex items-center ">
           <button
             onClick={props.toggleNavBar}
             data-collapse-toggle="mobile-menu-2"
             type="button"
-            className="inline-flex items-center p-2 ml-1 text-sm 
-            text-gray-500 rounded-lg lg:hidden"
+            className="ml-1 flex items-center rounded-lg p-2 text-sm text-gray-500 lg:hidden"
             aria-controls="mobile-menu-2"
             aria-expanded="false"
           >
@@ -37,7 +27,7 @@ export default function Header(props:props){
               <XCircle size={30} />
             ) : (
               <svg
-                className="w-6 h-6"
+                className="h-6 w-6"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -54,22 +44,17 @@ export default function Header(props:props){
           </button>
         </div>
         <div
-          className="hidden justify-between items-center w-full 
-          lg:flex lg:w-auto lg:order-1"
+          className="hidden w-full items-center justify-between lg:order-1 lg:flex lg:w-auto"
           id="mobile-menu-2"
         >
           <Nav currentVisibleSection={props.currentVisibleSection} />
         </div>
-      </nav>
-      <div className="flex flex-col justify-center items-center mr-5">
-        <div
-          className="flex items-center justify-center"
-        >
-          <button 
-            onClick={props.updateTheme}
-          >
-            {props.theme === 'dark' ? (
-              <Sun color="white"size={25} />
+      </div>
+      <div className="mr-5 flex flex-col items-center justify-center">
+        <div className="flex items-center justify-center">
+          <button onClick={props.updateTheme}>
+            {props.theme === "dark" ? (
+              <Sun color="white" size={25} />
             ) : (
               <Moon size={25} />
             )}
@@ -78,7 +63,4 @@ export default function Header(props:props){
       </div>
     </header>
   );
-};
-
-
-
+}

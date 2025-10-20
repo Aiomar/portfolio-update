@@ -2,12 +2,12 @@ import Icon from "./Icon";
 import { useEffect, useRef } from "react";
 import { motion, useInView, useAnimation } from "motion/react";
 // assets import
-import facebook from '../assets/facebook.svg'
-import instagram from '../assets/instagram.svg'
-import gmail from '../assets/gmail.svg'
-import github from '../assets/github.svg'
-import discord from '../assets/discord.svg'
-import fiverr from '../assets/fiverr.svg'
+import facebook from "../assets/facebook.svg";
+import instagram from "../assets/instagram.svg";
+import gmail from "../assets/gmail.svg";
+import github from "../assets/github.svg";
+import discord from "../assets/discord.svg";
+import fiverr from "../assets/fiverr.svg";
 
 export default function Social() {
   //on scorll animation
@@ -32,32 +32,15 @@ export default function Social() {
       initial="hidden"
       animate={mainControlls}
       transition={{ duration: 0.5, delay: 0.25 }}
-      className="flex flex-col items-center justify-center w-fit mt-2"
+      className="mt-2 flex w-fit flex-col items-center justify-center"
     >
-      <div 
-        className="grid grid-cols-6 md:grid-cols-6"
-      >
-        <Icon
-          img={gmail}
-          link="mailto:aidi360omar@gmail.com"
-        />
-        <Icon
-          img={facebook}
-          link="https://www.facebook.com/omar.aidi.12139"
-        />
-        <Icon
-          img={instagram}
-          link="https://www.instagram.com/omar.ai.di/"
-        />
+      <div className="grid grid-cols-6 md:grid-cols-6">
+        <Icon img={gmail} link="mailto:aidi360omar@gmail.com" />
+        <Icon img={facebook} link="https://www.facebook.com/omar.aidi.12139" />
+        <Icon img={instagram} link="https://www.instagram.com/omar.ai.di/" />
 
-        <Icon
-          img={github}
-          link="https://github.com/Aiomar"
-        />
-        <Icon
-          img={discord}
-          link="https://discord.gg/dzWm6DCztZ"
-        />
+        <Icon img={github} link="https://github.com/Aiomar" />
+        <Icon img={discord} link="https://discord.gg/dzWm6DCztZ" />
         <Icon
           img={fiverr}
           link="https://www.fiverr.com/omaraydi/buying?source=avatar_menu_profile"
