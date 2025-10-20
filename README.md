@@ -22,3 +22,28 @@ It highlights my projects, technologies I use, and ways to get in touch with me.
 - **Icons** lucide react
 - **Hosting:** Vercel  
 - **Version Control:** Git & GitHub
+
+---
+## ⚙️ Installation
+
+Follow these steps to run the portfolio locally:
+# 1. Clone the repository
+git clone https://github.com/username/portfolio.git
+
+# 2. Navigate into the project folder
+cd portfolio
+
+# 3. Install dependencies
+npm install
+
+# 4. Start the development server
+npm run dev
+
+##🗂️ Project Structure
+src/
+ ├─ assets/          # Images and icons
+ ├─ components/      # Reusable UI components
+ ├─ sections/        # Sections like About, Projects, Contact, etc.
+ ├─ App.jsx          # Main app component
+ ├─ main.jsx         # Entry point
+ └─ index.css        # Global styles
