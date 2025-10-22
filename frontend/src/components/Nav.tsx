@@ -85,7 +85,7 @@ export default function Nav(props: props) {
         </li>
         <li className="ml-8 md:ml-0">
           <a
-            href="https://github.com/Aiomar/portfolio"
+            href="https://github.com/Aiomar"
             target="_blank"
             className="scale-110 md:scale-100"
           >
