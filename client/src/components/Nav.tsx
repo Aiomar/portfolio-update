@@ -90,10 +90,11 @@ export default function Nav(props: props) {
             className="scale-110 md:scale-100"
           >
             <div
-              className="flex items-center md:justify-center"
-              title="check portfolio on github"
+              className="flex items-center md:justify-center m-2 ml-0 lg:m-0"
+              title="check portfolio on github "
             >
-              <Github size={25} className="text-black dark:text-white" />
+              <Github size={25} className="text-black dark:text-white " />
+              <p className="lg:hidden dark:text-white text-2xl font-semibold">Github</p>
             </div>
           </a>
         </li>

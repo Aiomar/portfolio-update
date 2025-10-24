@@ -13,13 +13,6 @@ export default function Aside(props: props) {
     >
       <div className="mt-32 lg:hidden">
         <Nav currentVisibleSection={props.currentVisibleSection} />
-        <div className="flex h-96 flex-row items-center justify-center">
-          <img
-            src="https://www.svgrepo.com/show/474372/code.svg"
-            alt=""
-            className="w-40 p-2"
-          />
-        </div>
       </div>
     </aside>
   );

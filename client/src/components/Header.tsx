@@ -1,6 +1,5 @@
 import { Moon, Sun, XCircle } from "lucide-react";
 import Nav from "./Nav";
-
 type props = {
   theme: string;
   updateTheme: () => void;
@@ -50,6 +49,7 @@ export default function Header(props: props) {
           <Nav currentVisibleSection={props.currentVisibleSection} />
         </div>
       </div>
+      
       <div className="mr-5 flex flex-col items-center justify-center">
         <div className="flex items-center justify-center">
           <button onClick={props.updateTheme}>
