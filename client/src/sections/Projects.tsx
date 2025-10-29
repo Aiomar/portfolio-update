@@ -56,6 +56,15 @@ const Projects = forwardRef((props: props, ref: Ref<HTMLDivElement>) => {
       link: "",
       status: "",
     },
+    {
+      title: "Discord Server Website",
+      description: "a website that promote a serevr discord",
+      tags: ["React", "Vite", "Tailwind CSS", "motion", "lucide-react"],
+      image: "/discordserver.png",
+      githubLink: "https://github.com",
+      link: "https://discord-server-nu.vercel.app/",
+      status: "fineshed",
+    },
   ];
 
   //On Scroll animation
