@@ -74,7 +74,8 @@ const Bio = forwardRef((props: props, ref: Ref<HTMLDivElement | null>) => {
           <>
             <img
               src={codedark}
-              className="md:float-left md:mr-10 md:flex w-96 border-2 border-gray-800 rounded-2xl mt-15 md:ml-10"
+              className="md:float-left md:mr-10 md:flex w-96 border-2 
+              border-gray-800 rounded-2xl mt-15 md:ml-10 hover:shadow-sm hover:shadow-sky-900"
               alt="Omar Aidi"
             />
           </>
@@ -82,7 +83,8 @@ const Bio = forwardRef((props: props, ref: Ref<HTMLDivElement | null>) => {
           <>
             <img
               src={codelight}
-              className="md:float-left md:mr-10 md:flex w-96 border-2 border-gray-300 rounded-2xl mt-15 md:ml-10"
+              className="md:float-left md:mr-10 md:flex w-96 border-2 border-gray-300 rounded-2xl mt-15 md:ml-10
+              hover:shadow-sm hover:shadow-sky-300"
               alt="Omar Aidi"
             />
           </>
