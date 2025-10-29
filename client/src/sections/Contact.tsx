@@ -105,7 +105,10 @@ const Contact = forwardRef((props: props, ref: Ref<HTMLDivElement | null>) => {
               id="name"
               name="name"
               onChange={handleFormChange}
-              className="roboto-regular mt-2 w-full rounded-md border border-gray-500 px-5 py-2 text-black focus:border-none focus:ring-2 focus:ring-sky-500 focus:outline-none dark:bg-slate-800 dark:text-white dark:placeholder:text-gray-200"
+              className="roboto-regular mt-2 w-full rounded-md border border-gray-500 px-5 
+              py-2 text-black focus:border-none focus:ring-2 focus:ring-sky-500 
+              focus:outline-none dark:bg-neutral-800 dark:text-white 
+              dark:placeholder:text-gray-200"
               placeholder="Enter your Name"
               value={formData.name}
               required
@@ -124,7 +127,9 @@ const Contact = forwardRef((props: props, ref: Ref<HTMLDivElement | null>) => {
                 id="phone"
                 name="phone"
                 onChange={handleFormChange}
-                className="roboto-regular mt-2 w-full rounded-md border border-gray-500 px-5 py-2 text-black focus:border-none focus:ring-2 focus:ring-sky-500 focus:outline-none dark:bg-slate-800 dark:text-white dark:placeholder:text-gray-200"
+                className="roboto-regular mt-2 w-full rounded-md border border-gray-500
+                px-5 py-2 text-black focus:border-none focus:ring-2 focus:ring-sky-500
+                focus:outline-none dark:bg-neutral-800 dark:text-white dark:placeholder:text-gray-200"
                 required
                 placeholder="+216"
                 value={formData.phone}
@@ -146,7 +151,9 @@ const Contact = forwardRef((props: props, ref: Ref<HTMLDivElement | null>) => {
               name="email"
               value={formData.email}
               onChange={handleFormChange}
-              className="mt-2 w-full rounded-md border border-gray-500 px-5 py-2 text-black focus:border-none focus:ring-2 focus:ring-sky-500 focus:outline-none dark:bg-slate-800 dark:text-white dark:placeholder:text-gray-200"
+              className="mt-2 w-full rounded-md border border-gray-500 px-5 py-2 text-black
+              focus:border-none focus:ring-2 focus:ring-sky-500 focus:outline-none dark:bg-neutral-800
+              dark:text-white dark:placeholder:text-gray-200"
               placeholder="Enter your email"
               required
             />
@@ -165,7 +172,9 @@ const Contact = forwardRef((props: props, ref: Ref<HTMLDivElement | null>) => {
               value={formData.message}
               onChange={handleFormChange}
               rows={4}
-              className="roboto-regular mt-2 max-h-28 w-full rounded-md border border-gray-500 px-5 py-2 text-black focus:border-none focus:ring-2 focus:ring-sky-500 focus:outline-none dark:bg-slate-800 dark:text-white dark:placeholder:text-gray-200"
+              className="roboto-regular mt-2 max-h-28 w-full rounded-md border border-gray-500
+              px-5 py-2 text-black focus:border-none focus:ring-2 focus:ring-sky-500 focus:outline-none
+              dark:bg-neutral-800 dark:text-white dark:placeholder:text-gray-200"
               placeholder="Enter your message"
               required
             ></textarea>
@@ -181,7 +190,8 @@ const Contact = forwardRef((props: props, ref: Ref<HTMLDivElement | null>) => {
           </div>
           <button
             type="submit"
-            className="w-full rounded-md bg-sky-500 px-4 py-2 text-white hover:bg-sky-600 focus:outline-none dark:bg-sky-700"
+            className="w-full rounded-md bg-sky-500 px-4 py-2 text-white 
+            hover:bg-sky-700 focus:outline-none dark:bg-sky-800"
           >
             <p className="flex flex-row items-center justify-center">
               <Send className="mr-1" /> Submit

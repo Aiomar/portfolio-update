@@ -1,8 +1,8 @@
 import { useEffect, forwardRef } from "react";
 import { motion, useAnimation } from "motion/react";
 import type { Ref } from "react";
-import codedark from "../assets/codedark.svg";
-import codelight from "../assets/codelight.svg";
+import codedark from "../assets/codedark.png";
+import codelight from "../assets/codelight.png";
 
 type props = {
   id: string;
@@ -74,7 +74,7 @@ const Bio = forwardRef((props: props, ref: Ref<HTMLDivElement | null>) => {
           <>
             <img
               src={codedark}
-              className="md:float-left md:mr-10 md:flex min-w-[300px] md:max-w-[700px]"
+              className="md:float-left md:mr-10 md:flex w-96 border-2 border-gray-800 rounded-2xl mt-15 md:ml-10"
               alt="Omar Aidi"
             />
           </>
@@ -82,7 +82,7 @@ const Bio = forwardRef((props: props, ref: Ref<HTMLDivElement | null>) => {
           <>
             <img
               src={codelight}
-              className="md:float-left md:mr-10 md:flex min-w-[300px] md:max-w-[700px]"
+              className="md:float-left md:mr-10 md:flex w-96 border-2 border-gray-300 rounded-2xl mt-15 md:ml-10"
               alt="Omar Aidi"
             />
           </>
