@@ -9,6 +9,7 @@ type props = {
 };
 
 const Projects = forwardRef((props: props, ref: Ref<HTMLDivElement>) => {
+  console.log(props.currentVisibleSection) //!debug
   const projects = [
     {
       title: "PADZONE E-Commerce Platform",
@@ -59,11 +60,11 @@ const Projects = forwardRef((props: props, ref: Ref<HTMLDivElement>) => {
     {
       title: "Discord Server Website",
       description: "a website that promote a serevr discord",
-      tags: ["React", "Vite", "Tailwind CSS", "motion", "lucide-react"],
+      tags: ["React", "Vite", "Tailwind CSS"],
       image: "/discordserver.png",
       githubLink: "https://github.com",
       link: "https://discord-server-nu.vercel.app/",
-      status: "fineshed",
+      status: "",
     },
   ];
 
@@ -85,21 +86,27 @@ const Projects = forwardRef((props: props, ref: Ref<HTMLDivElement>) => {
     <section
       id={props.id}
       ref={ref}
-      className="flex w-full flex-col items-center justify-center md:max-h-fit md:min-h-screen"
+      className="flex w-full flex-col items-center justify-center 
+      min-h-fit md:max-h-fit md:min-h-screen"
     >
       <motion.div
-        ref={ref}
         variants={motionVariants}
         initial="hidden"
         animate={mainControls}
         transition={{ duration: 0.5, delay: 0.5 }}
       >
-        <div className="mt-20 ml-5 flex items-center justify-center md:mt-5">
-          <h5 className="mb-10 text-5xl font-semibold text-gray-900 dark:text-white">
+        <div 
+          className="mt-20 ml-5 flex items-center justify-center md:mt-5"
+        >
+          <h5 
+            className="mb-10 text-5xl font-semibold text-gray-900 dark:text-white"
+          >
             Projects
           </h5>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3">
+        <div 
+          className="grid grid-cols-1 md:grid-cols-3 h-fit"
+          >
           {projects.map((project) => (
             <Project
               key={project.title}

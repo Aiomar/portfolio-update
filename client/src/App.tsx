@@ -50,7 +50,7 @@ export default function App() {
           }
         });
       },
-      { threshold: 0.3 },
+      { threshold: 0.1 },
     );
 
     // Observe each section stored in the refs array
@@ -100,8 +100,12 @@ export default function App() {
   }, [message, error]);
 
   return (
-    <div className="no-scrollbar relative h-screen max-h-fit w-full overflow-x-hidden">
-      <div className="fixed right-0 left-0 z-40 w-full">
+    <div 
+      className="no-scrollbar relative h-screen max-h-fit w-full overflow-x-hidden"
+    >
+      <div  
+        className="fixed right-0 left-0 z-40 w-full"
+      >
         <Header
           theme={theme}
           updateTheme={updateTheme}
@@ -151,7 +155,10 @@ export default function App() {
       {showTopScroll && (
         <div className="fixed right-7 bottom-20 z-50 md:right-10 md:bottom-5">
           <a href="#about">
-            <button className="over:bg-sky-300 flex h-12 w-12 items-center justify-center rounded-full bg-sky-400 shadow-md transition-shadow hover:scale-105 hover:shadow-gray-500 dark:hover:shadow-gray-700">
+            <button 
+              className="over:bg-sky-300 flex h-12 w-12 items-center justify-center 
+              rounded-full bg-sky-400 shadow-md transition-shadow hover:scale-105
+              hover:shadow-gray-500 dark:hover:shadow-gray-700">
               <ArrowUpCircle
                 size={50}
                 className="text-white dark:text-gray-900"

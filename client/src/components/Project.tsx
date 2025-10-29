@@ -11,7 +11,7 @@ export type project = {
 
 export default function Project(props: project) {
   return (
-    <div className="flex flex-col justify-center md:p-4 mt-4">
+    <div className="flex flex-col justify-center md:p-4 mt-4 scale-90 md:scale-100">
       <div className="h-[450px] max-h-[500px] max-w-sm rounded-3xl border-2 border-gray-300 
       bg-white p-3 shadow-sm shadow-gray-300 hover:bg-gray-100 hover:shadow-md 
       dark:border-gray-500 dark:bg-neutral-800 dark:shadow-gray-600 dark:hover:bg-neutral-900 ">
@@ -38,7 +38,8 @@ export default function Project(props: project) {
           <a
             href={props.repo}
             target="_blank"
-            className="inline-flex items-center rounded-lg bg-blue-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 focus:outline-none"
+            className="inline-flex items-center rounded-lg bg-blue-700 px-3 py-2 text-center 
+            text-sm font-medium text-white hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 focus:outline-none"
           >
             <Github />
           </a>
