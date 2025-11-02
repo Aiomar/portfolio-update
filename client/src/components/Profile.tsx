@@ -6,7 +6,7 @@ export default function Profile() {
     <div 
       className="mb-4 flex h-96 w-80 flex-col items-center rounded-xl border border-gray-200
     bg-white p-4 shadow-sm transition-shadow duration-300 hover:shadow-md md:mb-0 xl:ml-20 md:h-96 md:mt-4 
-      md:w-96 dark:bg-neutral-800 dark:shadow-blue-200"
+      md:w-96 dark:bg-neutral-900 dark:shadow-blue-200"
     >
       <img
         src={profile}

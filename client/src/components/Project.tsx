@@ -14,7 +14,7 @@ export default function Project(props: project) {
     <div className="flex flex-col justify-center md:p-4 mt-4 scale-90 md:scale-100">
       <div className="h-[450px] max-h-[500px] max-w-sm rounded-3xl border-2 border-gray-300 
       bg-white p-3 shadow-sm shadow-gray-300 hover:bg-gray-100 hover:shadow-md 
-      dark:border-gray-500 dark:bg-neutral-800 dark:shadow-gray-600 dark:hover:bg-neutral-900 ">
+      dark:border-gray-500 dark:bg-neutral-900 dark:shadow-gray-600 dark:hover:bg-neutral-800 ">
         <img src={props.img} alt="" className="rounded-2xl shadow-sm dark:shadow-gray-300" />
         <a href={props.link}>
           <h5 className="mt-2 mb-2 text-2xl font-bold tracking-tight dark:text-white">

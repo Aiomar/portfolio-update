@@ -10,7 +10,7 @@ type props = {
 
 export default function Header(props: props) {
   return (
-    <header className="fixed right-0 left-0 z-50 flex max-h-96 w-full bg-gray-50 md:flex-row md:justify-center dark:bg-neutral-900">
+    <header className="fixed right-0 left-0 z-50 flex max-h-96 w-full bg-gray-50 md:flex-row md:justify-center dark:bg-neutral-950">
       <div className="flex min-h-24 w-full px-4 py-2.5 lg:ml-0 lg:justify-center lg:px-6 order-03">
         <div className="flex items-center ">
           <button

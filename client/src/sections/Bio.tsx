@@ -61,7 +61,7 @@ const Bio = forwardRef((props: props, ref: Ref<HTMLDivElement | null>) => {
               Full-Stack Developer & CS Student
             </p>
           </div>
-          <div className="md:text-md mt-2 w-96 text-lg leading-relaxed text-wrap sm:text-base">
+          <div className="md:text-md mt-2 <-80 md:w-96 text-lg leading-relaxed text-wrap sm:text-base">
             <p className="text-gray-700 dark:text-gray-300">
               19 years old Computer Science Student at ISIGK I’m currently a
               junior Full Stack Web Developer looking for great work
