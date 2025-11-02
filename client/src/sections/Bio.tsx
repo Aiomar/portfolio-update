@@ -1,8 +1,6 @@
 import { useEffect, forwardRef } from "react";
 import { motion, useAnimation } from "motion/react";
 import type { Ref } from "react";
-import codedark from "../assets/codedark.png";
-import codelight from "../assets/codelight.png";
 
 type props = {
   id: string;
@@ -24,74 +22,60 @@ const Bio = forwardRef((props: props, ref: Ref<HTMLDivElement | null>) => {
     }
   }, [props.currentVisibleSection, mainControls]);
 
-  return (
-    <section
-      id={props.id}
+   return (
+    <motion.section
+      id="about"
       ref={ref}
-      className="flex h-screen w-full flex-col items-center justify-center px-4"
+      initial= "hidden"
+      variants={motionVariants}
+      whileInView={"visible"}
+      transition={{ duration: 0.5, delay: 0.25 }} 
+      viewport={{once:true, amount: 0.3}}
+      className="flex flex-col items-center w-screen md:w-full min-h-screen p-20"
     >
-      <motion.div
-        ref={ref}
-        className="mt-40 lg:mt-0 flex w-full flex-col items-center justify-center lg:flex-row"
-        variants={motionVariants}
-        initial="hidden"
-        animate={mainControls}
-        transition={{ duration: 0.5, delay: 0.25 }}
+      <h1
+        className="text-7xl md:text-9xl playfair-display dark:text-white mt-10"
       >
-        <div className="flex flex-col">
-          <div className="flex flex-col items-center md:mt-20 md:items-start">
-            <div className="flex flex-row">
-              <p className="text-lg font-bold tracking-wider text-gray-800 sm:text-xl md:text-lg dark:text-white">
-                Hello!
-              </p>
-              <p className="pl-2 text-lg font-bold tracking-wider text-gray-800 sm:text-xl md:text-lg dark:text-blue-400">
-                I'm
-              </p>
-            </div>
-            <div className="flex flex-row">
-              <h1 className="mt-1 text-2xl font-bold sm:text-xl md:text-3xl dark:text-white">
-                Omar
-              </h1>
-              <h1 className="mt-1 pl-2 text-2xl font-bold text-blue-400 sm:text-xl md:text-3xl">
-                Aidi
-              </h1>
-            </div>
-
-            <p className="mt-2 text-2xl sm:text-xl md:text-2xl dark:text-gray-500">
-              Full-Stack Developer & CS Student
-            </p>
-          </div>
-          <div className="md:text-md mt-2 <-80 md:w-96 text-lg leading-relaxed text-wrap sm:text-base">
-            <p className="text-gray-700 dark:text-gray-300">
-              19 years old Computer Science Student at ISIGK I’m currently a
-              junior Full Stack Web Developer looking for great work
-              opportunities and actively working towards becoming a Senior Full
-              Stack Web Developer.
-            </p>
-          </div>
+        Web Developer
+      </h1>
+      <div
+        className="relative flex items-center justify-center h-fit w-fit  md:h-full md:w-full mb-20 mt-32"
+      >
+        <motion.div
+          initial= "hidden"
+          variants={motionVariants}
+          whileInView={"visible"}
+          transition={{ duration: 0.5, delay: 0.3 }} 
+          viewport={{once:true, amount: 0.2}}
+          className="absolute border-16 z-30 w-72 h-fit md:w-[900px] m-20 mt-0 md:mb-0 rounded-3xl
+          dark:shadow-sm shadow-white scale-90 md:scale-100"
+        >
+         <img 
+            src="/bio.png" 
+            className="hidden md:block shadow-2xl  md:w-[900px]"
+          />
+          <img 
+            src="/phone.png" 
+            className="block md:hidden shadow-2xl  md:w-[900px]"
+          />
+        </motion.div>
+        <div
+          className="bg-sky-600 w-96 md:w-full h-96 rounded-4xl z-20 mt-32 md:mt-28"
+        >
         </div>
-        {props.theme === "dark" ? (
-          <>
-            <img
-              src={codedark}
-              className="md:float-left md:mr-10 md:flex w-96 border-2 
-              border-gray-800 rounded-2xl mt-15 md:ml-10 hover:shadow-sm hover:shadow-sky-900"
-              alt="Omar Aidi"
-            />
-          </>
-        ) : (
-          <>
-            <img
-              src={codelight}
-              className="md:float-left md:mr-10 md:flex w-96 border-2 border-gray-300 rounded-2xl mt-15 md:ml-10
-              hover:shadow-sm hover:shadow-sky-300"
-              alt="Omar Aidi"
-            />
-          </>
-        )}
-      </motion.div>
-    </section>
-  );
+      </div>
+      <div
+        className="w-full mt-1.5"
+      >
+        <p
+          className="text-gray-600 font-semibold text-sm dark:text-gray-300 w-80 md:w-96 text-wrap"
+        >
+          20 years old Computer Science Student at ISIGK I’m currently a Full Stack Web Developer
+          looking for great work opportunities 
+        </p>
+      </div>
+    </motion.section>
+  ) 
 });
 
 Bio.displayName = "Bio";
