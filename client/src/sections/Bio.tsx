@@ -65,7 +65,7 @@ const Bio = forwardRef((props: props, ref: Ref<HTMLDivElement | null>) => {
         </div>
       </div>
       <div
-        className="w-full mt-1.5"
+        className="w-80 mt-1.5"
       >
         <p
           className="text-gray-600 font-semibold text-sm dark:text-gray-300 w-80 md:w-96 text-wrap"
