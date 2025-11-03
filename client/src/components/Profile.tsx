@@ -24,7 +24,10 @@ export default function Profile() {
       <p className="text-md mt-2 font-semibold text-gray-600 dark:text-gray-400">
         Full-Stack Developer & CS Student
       </p>
-      <button className="mt-5 flex flex-row rounded-xl bg-blue-400 p-2 hover:dark:bg-blue-500">
+      <button 
+        className="mt-5 flex flex-row rounded-xl dark:bg-sky-600 bg-sky-500 p-2
+      hover:dark:bg-blue-500 dark:text-white"
+      >
         <Download className="mr-2" />
         Download Resume
       </button>

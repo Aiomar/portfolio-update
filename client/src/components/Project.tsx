@@ -38,15 +38,18 @@ export default function Project(props: project) {
           <a
             href={props.repo}
             target="_blank"
-            className="inline-flex items-center rounded-lg bg-blue-700 px-3 py-2 text-center 
-            text-sm font-medium text-white hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 focus:outline-none"
+            className="inline-flex items-center rounded-lg bg-sky-600 px-3 py-2 text-center 
+            text-sm font-medium text-white hover:bg-sky-700 focus:ring-4 
+            focus:ring-blue-300 focus:outline-none"
           >
             <Github />
           </a>
           <a
             href={props.link}
             target="_blank"
-            className="ml-2 inline-flex items-center rounded-lg bg-blue-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 focus:outline-none"
+            className="ml-2 inline-flex items-center rounded-lg bg-sky-600 px-3 py-2 text-center 
+            text-sm font-medium text-white hover:bg-sky-700 focus:ring-4 focus:ring-blue-300
+            focus:outline-none"
           >
             <Globe />
           </a>

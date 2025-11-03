@@ -191,7 +191,7 @@ const Contact = forwardRef((props: props, ref: Ref<HTMLDivElement | null>) => {
           <button
             type="submit"
             className="w-full rounded-md bg-sky-500 px-4 py-2 text-white 
-            hover:bg-sky-700 focus:outline-none dark:bg-sky-800"
+            hover:bg-sky-700 focus:outline-none dark:bg-sky-600"
           >
             <p className="flex flex-row items-center justify-center">
               <Send className="mr-1" /> Submit
