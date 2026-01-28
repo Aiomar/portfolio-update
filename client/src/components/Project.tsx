@@ -13,14 +13,17 @@ export default function Project({ title, img, details, link, status, repo }: Pro
   const isFinished = status === "finished";
 
   return (
-    <div className="group flex flex-col w-full h-full border border-slate-200/60 bg-white/50 transition-all duration-300 hover:border-sky-500/50 hover:bg-white dark:border-slate-800/60 dark:bg-slate-900/40 dark:hover:bg-slate-900/60 backdrop-blur-sm rounded-xl overflow-hidden shadow-sm hover:shadow-md">
+    <div className="group flex flex-col w-full h-full border border-slate-200/60 bg-white/50
+     transition-all duration-300 hover:border-sky-500/50 hover:bg-white dark:border-slate-800/60
+    dark:bg-slate-900/40 dark:hover:bg-slate-900/60 backdrop-blur-sm rounded-xl overflow-hidden shadow-sm hover:shadow-md">
       
       {/* 1. Top: Image with Vite-style Grayscale filter */}
       <div className="relative aspect-video w-full overflow-hidden border-b border-slate-200/60 dark:border-slate-800/60">
         <img 
           src={img} 
           alt={title} 
-          className="h-full w-full object-cover grayscale opacity-70 transition-all duration-700 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105" 
+          className="h-full w-full object-cover  opacity-70 transition-all duration-700 
+          group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105" 
         />
         {/* Status Badge Over Image */}
         <div className="absolute top-3 right-3">

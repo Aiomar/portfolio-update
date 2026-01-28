@@ -8,12 +8,12 @@ type Props = {
 
 const projectsData = [
   {
-    title: "PADZONE E-Commerce",
-    description: "Fully responsive platform with product catalog, cart, and payment integration.",
-    image: "/padzone.png",
+    title: "E-commerce Shop",
+    description: "Full-stack clothing store built with Laravel and React.",
+    image: "/clothesshop.png",
     githubLink: "https://github.com",
-    link: "https://omarshop.vercel.app/",
-    status: "finished",
+    link: "",
+    status: "dev",
   },
   {
     title: "Med Portfolio App",
@@ -23,7 +23,7 @@ const projectsData = [
     link: "https://medyassine.vercel.app/",
     status: "finished",
   },
-  {
+    {
     title: "Notini",
     description: "Academic utility tool helping students calculate and track results effectively.",
     image: "/notini.png",
@@ -40,13 +40,14 @@ const projectsData = [
     status: "finished",
   },
   {
-    title: "E-commerce Shop",
-    description: "Full-stack clothing store built with Laravel and React.",
-    image: "/clothesshop.png",
+    title: "PADZONE E-Commerce",
+    description: "Fully responsive platform with product catalog, cart, and payment integration.",
+    image: "/padzone.png",
     githubLink: "https://github.com",
-    link: "",
-    status: "dev",
+    link: "https://omarshop.vercel.app/",
+    status: "finished",
   },
+  
   {
     title: "Discord Website",
     description: "Promotional landing page for a specialized Discord community.",
@@ -57,10 +58,18 @@ const projectsData = [
   },
   {
     title: "Dosis Website",
-    description: "Promotional landing page for a specialized Discord community.",
-    image: "/discordserver.png",
+    description: "Promotional landing page for a Coffee shop",
+    image: "/dosis.png",
     githubLink: "https://github.com",
-    link: "https://discord-server-nu.vercel.app/",
+    link: "https://dosiskr.vercel.app/",
+    status: "finished",
+  },
+  {
+    title: "Giftboom Webapp",
+    description: "Full-stack giftcards store built with Nest js and React",
+    image: "/giftboom.png",
+    githubLink: "https://github.com",
+    link: "/",
     status: "finished",
   },
 ];
