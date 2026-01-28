@@ -1,168 +1,80 @@
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "../components/Card";
-import Profile from "../components/Profile";
-import { forwardRef, useEffect, useState } from "react";
-import type { Ref } from "react";
-import { motion, useAnimation } from "motion/react";
+import { motion } from "framer-motion";
+import { Code2, Server, Database, Wrench } from "lucide-react";
 
-const skillsData = {
-  frontend: ["HTML/CSS/js", "TypeScript", "Vite/React", "Tailwind CSS"],
-  backend: ["Nest js", "RESTful APIs"],
-  database: ["MongoDB", "MySql", "Redis"],
-  tools: ["Git", "Docker"],
-};
+const skillsData = [
+  {
+    category: "Frontend",
+    icon: <Code2 className="w-4 h-4" />,
+    skills: ["TypeScript", "React", "Next.js", "Tailwind CSS"],
+  },
+  {
+    category: "Backend",
+    icon: <Server className="w-4 h-4" />,
+    skills: ["NestJS", "Node.js", "PostgreSQL", "Prisma"],
+  },
+  {
+    category: "DevOps",
+    icon: <Wrench className="w-4 h-4" />,
+    skills: ["Docker", "Git", "CI/CD", "Linux"],
+  },
+  {
+    category: "Database",
+    icon: <Database className="w-4 h-4" />,
+    skills: ["MongoDB", "Redis", "MySQL", "PostgreSQL"],
+  },
+];
 
-type props = {
+type Props = {
   id: string;
   currentVisibleSection: string;
 };
 
-const Resume = forwardRef((props: props, ref: Ref<HTMLDivElement | null>) => {
-  const motionVariants = {
-    hidden: { opacity: 0, y: 75 },
-    visible: { opacity: 1, y: 0 },
-  };
-  const mainControls = useAnimation();
-
-  useEffect(() => {
-    if (props.currentVisibleSection === "resume") {
-      mainControls.start("visible");
-    }
-  }, [props.currentVisibleSection, mainControls]);
-
-  // verifiy if the screen is mobile width to show profile on top of resume cards
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
+export default function Resume({ id }: Props) {
   return (
-    <section
-      id={props.id}
-      ref={ref}
-      className="flex min-h-screen w-full flex-col items-center justify-center"
-    >
+    <div className="w-full py-12">
       <motion.div
-        ref={ref}
-        variants={motionVariants}
-        initial="hidden"
-        animate={mainControls}
-        transition={{ duration: 0.5, delay: 0.5 }}
-        className="container mx-auto px-4 md:px-6"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        className="max-w-5xl mx-auto"
       >
-        <div className="mt-12 mb-12 flex flex-col items-center text-center">
-          <h2 className="text-3xl font-bold tracking-tight md:text-4xl dark:text-white">
-            Resume & Skills
+        {/* Simple Text Header */}
+        <div className="mb-12 border-b border-slate-200 dark:border-slate-800 pb-8">
+          <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
+            Technical <span className="text-sky-500">Stack</span>
           </h2>
-          <p className="text-muted-foreground mt-4 max-w-[700px] dark:text-white">
-            I've worked with a range of technologies in the web development
-            world.
+          <p className="text-sm text-slate-500 mt-2 font-medium">
+            Core technologies I use to build and deploy applications.
           </p>
         </div>
-        <div className="flex flex-col items-center justify-center xl:flex-row">
-          {isMobile && <Profile />}
-          <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
-            <Card>
-              <CardHeader>
-                <CardTitle>Frontend</CardTitle>
-                <CardDescription>
-                  Technologies I use for building user interfaces
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2">
-                  {skillsData.frontend.map((skill, index) => (
-                    <span
-                      key={index}
-                      className="bg-primary/10 text-primary rounded-full px-3 py-1 text-sm"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
 
-            <Card>
-              <CardHeader>
-                <CardTitle>Backend</CardTitle>
-                <CardDescription>
-                  Technologies I use for server-side development
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2">
-                  {skillsData.backend.map((skill, index) => (
-                    <span
-                      key={index}
-                      className="bg-primary/10 text-primary rounded-full px-3 py-1 text-sm"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+        {/* Minimal List Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-10">
+          {skillsData.map((item, idx) => (
+            <div key={idx} className="flex flex-col gap-4">
+              {/* Category Title */}
+              <div className="flex items-center gap-2 text-slate-900 dark:text-slate-100">
+                <span className="text-sky-500">{item.icon}</span>
+                <h3 className="text-sm font-bold uppercase tracking-widest">{item.category}</h3>
+              </div>
 
-            <Card>
-              <CardHeader>
-                <CardTitle>Database</CardTitle>
-                <CardDescription>
-                  Technologies I use for data storage
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2">
-                  {skillsData.database.map((skill, index) => (
-                    <span
-                      key={index}
-                      className="bg-primary/10 text-primary rounded-full px-3 py-1 text-sm"
-                    >
+              {/* Skill Items */}
+              <div className="flex flex-wrap gap-x-6 gap-y-3">
+                {item.skills.map((skill, sIdx) => (
+                  <div key={sIdx} className="flex items-center gap-2 group cursor-default">
+                    {/* Small dot indicator */}
+                    <div className="h-1 w-1 rounded-full bg-slate-300 dark:bg-slate-700 group-hover:bg-sky-500 transition-colors" />
+                    <span className="text-[13px] font-medium text-slate-600 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-slate-100 transition-colors">
                       {skill}
                     </span>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle>Tools</CardTitle>
-                <CardDescription>
-                  Development tools and utilities I use
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2">
-                  {skillsData.tools.map((skill, index) => (
-                    <span
-                      key={index}
-                      className="bg-primary/10 text-primary rounded-full px-3 py-1 text-sm"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-          {!isMobile && <Profile />}
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </motion.div>
-    </section>
+    </div>
   );
-});
-
-Resume.displayName = "Resume";
-export default Resume;
+}

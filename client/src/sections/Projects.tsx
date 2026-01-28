@@ -1,128 +1,115 @@
 import Project from "../components/Project";
-import { useEffect, forwardRef } from "react";
-import { motion, useAnimation } from "motion/react";
-import type { Ref } from "react";
+import { motion } from "framer-motion";
 
-type props = {
+type Props = {
   id: string;
   currentVisibleSection: string;
 };
 
-const Projects = forwardRef((props: props, ref: Ref<HTMLDivElement>) => {
-  console.log(props.currentVisibleSection) //!debug
-  const projects = [
-    {
-      title: "PADZONE E-Commerce Platform",
-      description:
-        "A fully responsive e-commerce website with product catalog, shopping cart, and payment integration.",
-      tags: ["Vite", "React", "Nest js", "MongoDB"],
-      image: "/padzone.png",
-      githubLink: "https://github.com",
-      link: "https://omarshop.vercel.app/",
-      status: "",
-    },
-    {
-      title: "Med Portfolio App",
-      description: "A fully responsive personel portfolio webapp",
-      tags: ["Vite", "React", "Tailwind CSS"],
-      image: "/medportfolio.png",
-      githubLink: "https://github.com",
-      link: "https://medyassine.vercel.app/",
-      status: "",
-    },
-    {
-      title: "Notini",
-      description: "a simple app that helps student calculates their result",
-      tags: ["React", "Vite", "Tailwind CSS"],
-      image: "/notini.png",
-      githubLink: "https://github.com",
-      link: "https://notini.vercel.app/",
-      status: "",
-    },
-    {
-      title: "PinkDragons",
-      description: "E-sports team with a responsive design",
-      tags: ["React", "Vite", "Tailwind CSS"],
-      image: "/pinkdragons.png",
-      githubLink: "https://github.com",
-      link: "https://pinkdragons.vercel.app/",
-      status: "",
-    },
-    {
-      title: "E-commerce Shop ",
-      description: "an ecommerce website made with laravel for selling clothes",
-      tags: ["React", "Vite", "Tailwind CSS"],
-      image: "/clothesshop.png",
-      githubLink: "https://github.com",
-      link: "",
-      status: "",
-    },
-    {
-      title: "Discord Server Website",
-      description: "a website that promote a serevr discord",
-      tags: ["React", "Vite", "Tailwind CSS"],
-      image: "/discordserver.png",
-      githubLink: "https://github.com",
-      link: "https://discord-server-nu.vercel.app/",
-      status: "",
-    },
-  ];
+const projectsData = [
+  {
+    title: "PADZONE E-Commerce",
+    description: "Fully responsive platform with product catalog, cart, and payment integration.",
+    image: "/padzone.png",
+    githubLink: "https://github.com",
+    link: "https://omarshop.vercel.app/",
+    status: "finished",
+  },
+  {
+    title: "Med Portfolio App",
+    description: "A high-performance personal portfolio web application built for speed.",
+    image: "/medportfolio.png",
+    githubLink: "https://github.com",
+    link: "https://medyassine.vercel.app/",
+    status: "finished",
+  },
+  {
+    title: "Notini",
+    description: "Academic utility tool helping students calculate and track results effectively.",
+    image: "/notini.png",
+    githubLink: "https://github.com",
+    link: "https://notini.vercel.app/",
+    status: "finished",
+  },
+  {
+    title: "PinkDragons",
+    description: "E-sports team landing page featuring optimized responsive design patterns.",
+    image: "/pinkdragons.png",
+    githubLink: "https://github.com",
+    link: "https://pinkdragons.vercel.app/",
+    status: "finished",
+  },
+  {
+    title: "E-commerce Shop",
+    description: "Full-stack clothing store built with Laravel and React.",
+    image: "/clothesshop.png",
+    githubLink: "https://github.com",
+    link: "",
+    status: "dev",
+  },
+  {
+    title: "Discord Website",
+    description: "Promotional landing page for a specialized Discord community.",
+    image: "/discordserver.png",
+    githubLink: "https://github.com",
+    link: "https://discord-server-nu.vercel.app/",
+    status: "finished",
+  },
+  {
+    title: "Dosis Website",
+    description: "Promotional landing page for a specialized Discord community.",
+    image: "/discordserver.png",
+    githubLink: "https://github.com",
+    link: "https://discord-server-nu.vercel.app/",
+    status: "finished",
+  },
+];
 
-  //On Scroll animation
-  const motionVariants = {
-    hidden: { opacity: 0, y: 75 },
-    visible: { opacity: 1, y: 0 },
-  };
-
-  const mainControls = useAnimation();
-
-  useEffect(() => {
-    if (props.currentVisibleSection === "projects") {
-      mainControls.start("visible");
-    }
-  }, [props.currentVisibleSection, mainControls]);
-
+export default function Projects({ id }: Props) {
   return (
-    <section
-      id={props.id}
-      ref={ref}
-      className="flex w-full flex-col items-center justify-center 
-      min-h-fit md:max-h-fit md:min-h-screen"
-    >
+    <div className="w-full">
       <motion.div
-        variants={motionVariants}
-        initial="hidden"
-        animate={mainControls}
-        transition={{ duration: 0.5, delay: 0.5 }}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.5 }}
+        className="max-w-6xl mx-auto" // Slightly wider to accommodate grid
       >
-        <div 
-          className="mt-20 ml-5 flex items-center justify-center md:mt-5"
-        >
-          <h5 
-            className="mb-10 text-5xl font-semibold text-gray-900 dark:text-white"
-          >
+        {/* Header Section */}
+        <div className="mb-12">
+          <div className="flex items-center gap-2 mb-2">
+            <div className="h-[1px] w-8 bg-sky-500/50" />
+            <span className="text-[10px] font-bold tracking-[0.4em] text-sky-500 uppercase">
+              03. Selected Work
+            </span>
+          </div>
+          <h2 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
             Projects
-          </h5>
+          </h2>
         </div>
-        <div 
-          className="grid grid-cols-1 md:grid-cols-3 h-fit"
-          >
-          {projects.map((project) => (
-            <Project
+
+        {/* Compact Grid Container */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {projectsData.map((project, idx) => (
+            <motion.div
               key={project.title}
-              title={project.title}
-              details={project.description}
-              link={project.link}
-              repo={project.githubLink}
-              img={project.image}
-              status={project.status}
-            />
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: idx * 0.05 }} // Faster stagger for smaller cards
+              viewport={{ once: true }}
+            >
+              <Project
+                title={project.title}
+                details={project.description}
+                link={project.link}
+                repo={project.githubLink}
+                img={project.image}
+                status={project.status}
+              />
+            </motion.div>
           ))}
         </div>
       </motion.div>
-    </section>
+    </div>
   );
-});
-
-Projects.displayName = "Projects";
-export default Projects;
+}

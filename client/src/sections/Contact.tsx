@@ -1,40 +1,15 @@
-import React, { useEffect, forwardRef, useState } from "react";
-import { motion, useAnimation } from "motion/react";
-import type { Ref } from "react";
-import { Send } from "lucide-react";
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { Send, MapPin, Mail, Phone } from "lucide-react";
 
-type props = {
+type Props = {
   id: string;
   currentVisibleSection: string;
-  setMessage: React.Dispatch<React.SetStateAction<string>>;
-  setError: React.Dispatch<React.SetStateAction<string>>;
+  setMessage: (msg: string) => void; 
+  setError: (err: string) => void;
 };
 
-const Contact = forwardRef((props: props, ref: Ref<HTMLDivElement | null>) => {
-  //On Scroll Animation
-  const motionVariants = {
-    hidden: { opacity: 0, y: 75 },
-    visible: { opacity: 1, y: 0 },
-  };
-
-  const mainControls = useAnimation();
-  useEffect(() => {
-    if (props.currentVisibleSection === "contact") {
-      mainControls.start("visible");
-    }
-  }, [props.currentVisibleSection, mainControls]);
-
-  // add tn phone numebr code to phone input
-  const updatePhone = () => {
-    const phoneInput: HTMLInputElement | null = document.getElementById(
-      "phone",
-    ) as HTMLInputElement;
-    if (phoneInput) {
-      phoneInput.value = "+216 ";
-    }
-  };
-
-  //handling form data retreving
+export default function Contact({ id, setMessage, setError }: Props) {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -42,166 +17,137 @@ const Contact = forwardRef((props: props, ref: Ref<HTMLDivElement | null>) => {
     message: "",
   });
 
-  const handleFormChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
+  const handleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  //*API
-  // fetch api that submit Contact form
   const submitForm = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       const res = await fetch("http://localhost:3001/contact", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
-      if (!res.ok) {
-        throw new Error("Cannot Submit Form!");
-      }
-      props.setMessage(
-        "It will be a pleasure working with you" + String(FormData.name),
-      );
+      if (!res.ok) throw new Error("Submission failed");
+      
+      setMessage(`Thanks ${formData.name}, I'll get back to you soon!`);
+      setFormData({ name: "", phone: "", email: "", message: "" }); // Reset form
     } catch (err) {
-      if (err instanceof Error) {
-        props.setError("Form is not submitted check connection");
-      }
+      setError("Server connection error. Please try again later.");
     }
   };
 
   return (
-    <section
-      id={props.id}
-      ref={ref}
-      className="flex min-h-screen w-full flex-col items-center justify-center md:p-20"
-    >
-      <h2 className="text-3xl font-bold tracking-tight md:text-4xl dark:text-white">
-        Contact
-      </h2>
-      <motion.div
-        ref={ref}
-        variants={motionVariants}
-        initial="hidden"
-        animate={mainControls}
-        transition={{ duration: 0.5, delay: 0.5 }}
+    <div className="w-full max-w-5xl mx-auto py-12">
+      {/* Header */}
+      <motion.div 
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="mb-12"
       >
-        <form onSubmit={submitForm} className="mb-4 w-full rounded-2xl p-5">
-          <div className="mb-4 w-full">
-            <label
-              htmlFor="name"
-              className="block text-sm font-medium dark:text-white"
-            >
-              <div className="flex items-center">
-                <p className="roboto-regular ml-1">NAME</p>
+        <div className="flex items-center gap-2 mb-2">
+          <div className="h-[1px] w-8 bg-sky-500/50" />
+          <span className="text-[10px] font-black tracking-[0.4em] text-sky-500 uppercase">
+            04. Get In Touch
+          </span>
+        </div>
+        <h2 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-4xl">
+          Let's <span className="text-sky-500">Collaborate</span>
+        </h2>
+      </motion.div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        {/* Left Side: Info */}
+        <div className="space-y-8">
+          <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed max-w-sm font-medium">
+            I’m always looking for new opportunities and interesting projects. 
+            Whether you have a question or just want to say hi, I’ll try my best to get back to you!
+          </p>
+          
+          <div className="space-y-4">
+            {[
+              { icon: <Mail size={18}/>, label: "Email", value: "your.email@example.com" },
+              { icon: <Phone size={18}/>, label: "Phone", value: "+216 -- --- ---" },
+              { icon: <MapPin size={18}/>, label: "Location", value: "Tunisia" }
+            ].map((item, i) => (
+              <div key={i} className="flex items-center gap-4 text-slate-600 dark:text-slate-300">
+                <div className="text-sky-500">{item.icon}</div>
+                <span className="text-[13px] font-bold">{item.value}</span>
               </div>
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              onChange={handleFormChange}
-              className="roboto-regular mt-2 w-full rounded-md border border-gray-500 px-5 
-              py-2 text-black focus:border-none focus:ring-2 focus:ring-sky-500 
-              focus:outline-none dark:bg-neutral-800 dark:text-white 
-              dark:placeholder:text-gray-200"
-              placeholder="Enter your Name"
-              value={formData.name}
-              required
-            />
+            ))}
           </div>
-          <div className="mb-4">
-            <label
-              htmlFor="phone"
-              className="block text-sm font-medium dark:text-white"
-            >
-              <p className="roboto-regular ml-1">PHONE NUMBER</p>
-            </label>
-            <div className="flex items-center justify-center">
-              <input
-                type="tel"
-                id="phone"
-                name="phone"
-                onChange={handleFormChange}
-                className="roboto-regular mt-2 w-full rounded-md border border-gray-500
-                px-5 py-2 text-black focus:border-none focus:ring-2 focus:ring-sky-500
-                focus:outline-none dark:bg-neutral-800 dark:text-white dark:placeholder:text-gray-200"
-                required
-                placeholder="+216"
-                value={formData.phone}
-                onClick={updatePhone}
+        </div>
+
+        {/* Right Side: Form */}
+        <motion.form 
+          onSubmit={submitForm}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="space-y-4 p-6 rounded-2xl border border-slate-200/60 dark:border-slate-800/60 bg-white/50 dark:bg-slate-900/30 backdrop-blur-sm"
+        >
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="space-y-1.5">
+              <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Name</label>
+              <input 
+                name="name" 
+                value={formData.name} 
+                onChange={handleFormChange} 
+                className="w-full bg-slate-100/50 dark:bg-slate-800/40 border-none rounded-lg px-4 py-2 text-sm focus:ring-1 focus:ring-sky-500 outline-none transition-all"
+                placeholder="foulen" 
+                required 
+              />
+            </div>
+            <div className="space-y-1.5">
+              <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Phone</label>
+              <input 
+                name="phone" 
+                value={formData.phone} 
+                onChange={handleFormChange} 
+                className="w-full bg-slate-100/50 dark:bg-slate-800/40 border-none rounded-lg px-4 py-2 text-sm focus:ring-1 focus:ring-sky-500 outline-none transition-all"
+                placeholder="+216" 
+                required 
               />
             </div>
           </div>
 
-          <div className="mb-4">
-            <label
-              htmlFor="email"
-              className="block text-sm font-medium dark:text-white"
-            >
-              <p className="roboto-regular ml-1">EMAIL</p>
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleFormChange}
-              className="mt-2 w-full rounded-md border border-gray-500 px-5 py-2 text-black
-              focus:border-none focus:ring-2 focus:ring-sky-500 focus:outline-none dark:bg-neutral-800
-              dark:text-white dark:placeholder:text-gray-200"
-              placeholder="Enter your email"
-              required
+          <div className="space-y-1.5">
+            <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Email</label>
+            <input 
+              name="email" 
+              type="email" 
+              value={formData.email} 
+              onChange={handleFormChange} 
+              className="w-full bg-slate-100/50 dark:bg-slate-800/40 border-none rounded-lg px-4 py-2 text-sm focus:ring-1 focus:ring-sky-500 outline-none transition-all"
+              placeholder="name@email.com" 
+              required 
             />
           </div>
 
-          <div className="mb-4">
-            <label
-              htmlFor="message"
-              className="block text-sm font-medium dark:text-white"
-            >
-              <p className="roboto-regular ml-1">MESSAGE</p>
-            </label>
-            <textarea
-              id="message"
-              name="message"
-              value={formData.message}
-              onChange={handleFormChange}
+          <div className="space-y-1.5">
+            <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Message</label>
+            <textarea 
+              name="message" 
+              value={formData.message} 
+              onChange={handleFormChange} 
               rows={4}
-              className="roboto-regular mt-2 max-h-28 w-full rounded-md border border-gray-500
-              px-5 py-2 text-black focus:border-none focus:ring-2 focus:ring-sky-500 focus:outline-none
-              dark:bg-neutral-800 dark:text-white dark:placeholder:text-gray-200"
-              placeholder="Enter your message"
-              required
-            ></textarea>
+              className="w-full bg-slate-100/50 dark:bg-slate-800/40 border-none rounded-lg px-4 py-2 text-sm focus:ring-1 focus:ring-sky-500 outline-none transition-all resize-none"
+              placeholder="Tell me about your project..." 
+              required 
+            />
           </div>
-          <div className="mb-5">
-            <label
-              htmlFor=""
-              className="roboto-regular text-center dark:text-white"
-            >
-              Leave me a suggestion or a project idea or contact me if you want
-              us to work together
-            </label>
-          </div>
+
           <button
             type="submit"
-            className="w-full rounded-md bg-sky-500 px-4 py-2 text-white 
-            hover:bg-sky-700 focus:outline-none dark:bg-sky-600"
+            className="group w-full flex items-center justify-center gap-2 bg-sky-500 hover:bg-sky-600 text-white font-bold text-[12px] uppercase tracking-widest py-3 rounded-lg transition-all active:scale-[0.98]"
           >
-            <p className="flex flex-row items-center justify-center">
-              <Send className="mr-1" /> Submit
-            </p>
+            Send Message <Send size={14} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
           </button>
-        </form>
-      </motion.div>
-    </section>
+        </motion.form>
+      </div>
+    </div>
   );
-});
-
-Contact.displayName = "Form";
-export default Contact;
+}

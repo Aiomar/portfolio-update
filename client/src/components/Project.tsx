@@ -1,6 +1,6 @@
-import { Github, Globe } from "lucide-react";
+import { Github, Globe, ArrowUpRight } from "lucide-react";
 
-export type project = {
+export type ProjectProps = {
   title: string;
   img: string;
   details: string;
@@ -9,49 +9,62 @@ export type project = {
   repo: string;
 };
 
-export default function Project(props: project) {
+export default function Project({ title, img, details, link, status, repo }: ProjectProps) {
+  const isFinished = status === "finished";
+
   return (
-    <div className="flex flex-col justify-center md:p-4 mt-4 scale-90 md:scale-100">
-      <div className="h-[450px] max-h-[500px] max-w-sm rounded-3xl border-2 border-gray-300 
-      bg-white p-3 shadow-sm shadow-gray-300 hover:bg-gray-100 hover:shadow-md 
-      dark:border-gray-500 dark:bg-neutral-900 dark:shadow-gray-600 dark:hover:bg-neutral-800 ">
-        <img src={props.img} alt="" className="rounded-2xl shadow-sm dark:shadow-gray-300" />
-        <a href={props.link}>
-          <h5 className="mt-2 mb-2 text-2xl font-bold tracking-tight dark:text-white">
-            {props.title}
-          </h5>
-        </a>
-        <p className="mb-3 font-normal dark:text-white">{props.details}</p>
-        <span className="mt-2 mb-2 flex font-mono dark:text-white">
-          🚨Project Status &nbsp;
-          <p
-            className={
-              status === "finished"
-                ? "text-emerald-500 underline-offset-2 hover:underline"
-                : "text-orange-500 underline-offset-2 hover:underline"
-            }
-          >
-            {status === "finished" ? "finished✅" : "Not yet❗"}{" "}
-          </p>
-        </span>
-        <div className="mb-2">
+    <div className="group flex flex-col w-full h-full border border-slate-200/60 bg-white/50 transition-all duration-300 hover:border-sky-500/50 hover:bg-white dark:border-slate-800/60 dark:bg-slate-900/40 dark:hover:bg-slate-900/60 backdrop-blur-sm rounded-xl overflow-hidden shadow-sm hover:shadow-md">
+      
+      {/* 1. Top: Image with Vite-style Grayscale filter */}
+      <div className="relative aspect-video w-full overflow-hidden border-b border-slate-200/60 dark:border-slate-800/60">
+        <img 
+          src={img} 
+          alt={title} 
+          className="h-full w-full object-cover grayscale opacity-70 transition-all duration-700 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105" 
+        />
+        {/* Status Badge Over Image */}
+        <div className="absolute top-3 right-3">
+           <div className={`flex items-center gap-1.5 px-2 py-1 rounded-md backdrop-blur-md border text-[10px] font-bold uppercase tracking-wider ${
+             isFinished 
+               ? "bg-emerald-50/80 border-emerald-200/50 text-emerald-600 dark:bg-emerald-500/10 dark:border-emerald-500/20 dark:text-emerald-400" 
+               : "bg-amber-50/80 border-amber-200/50 text-amber-600 dark:bg-amber-500/10 dark:border-amber-500/20 dark:text-amber-400"
+           }`}>
+             <span className={`h-1 w-1 rounded-full ${isFinished ? 'bg-emerald-500' : 'bg-amber-500'} animate-pulse`} />
+             {isFinished ? "Live" : "Dev"}
+           </div>
+        </div>
+      </div>
+
+      {/* 2. Middle: Content */}
+      <div className="flex flex-1 flex-col p-5">
+        <div className="flex items-center justify-between mb-2">
+          <h3 className="text-base font-bold tracking-tight text-slate-900 dark:text-white group-hover:text-sky-500 transition-colors">
+            {title}
+          </h3>
+          <a href={link} target="_blank" className="text-slate-400 hover:text-sky-500 transition-colors">
+            <ArrowUpRight size={16} />
+          </a>
+        </div>
+
+        <p className="text-[13px] leading-relaxed text-slate-500 dark:text-slate-400 line-clamp-3">
+          {details}
+        </p>
+
+        {/* 3. Bottom: Actions */}
+        <div className="mt-auto pt-5 flex items-center gap-5">
           <a
-            href={props.repo}
+            href={repo}
             target="_blank"
-            className="inline-flex items-center rounded-lg bg-sky-600 px-3 py-2 text-center 
-            text-sm font-medium text-white hover:bg-sky-700 focus:ring-4 
-            focus:ring-blue-300 focus:outline-none"
+            className="flex items-center gap-1.5 text-[11px] font-black uppercase tracking-[0.15em] text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors"
           >
-            <Github />
+            <Github size={14} /> Source
           </a>
           <a
-            href={props.link}
+            href={link}
             target="_blank"
-            className="ml-2 inline-flex items-center rounded-lg bg-sky-600 px-3 py-2 text-center 
-            text-sm font-medium text-white hover:bg-sky-700 focus:ring-4 focus:ring-blue-300
-            focus:outline-none"
+            className="flex items-center gap-1.5 text-[11px] font-black uppercase tracking-[0.15em] text-slate-400 hover:text-sky-500 transition-colors"
           >
-            <Globe />
+            <Globe size={14} /> Demo
           </a>
         </div>
       </div>

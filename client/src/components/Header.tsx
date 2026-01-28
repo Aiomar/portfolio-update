@@ -1,6 +1,8 @@
-import { Moon, Sun, XCircle } from "lucide-react";
+import { Moon, Sun, X, Menu } from "lucide-react";
 import Nav from "./Nav";
-type props = {
+import { motion, AnimatePresence } from "framer-motion";
+
+type Props = {
   theme: string;
   updateTheme: () => void;
   toggleNavBar: () => void;
@@ -8,57 +10,65 @@ type props = {
   currentVisibleSection: string;
 };
 
-export default function Header(props: props) {
+export default function Header({ 
+  theme, 
+  updateTheme, 
+  toggleNavBar, 
+  isPhoneNavOpen, 
+  currentVisibleSection 
+}: Props) {
   return (
-    <header className="fixed right-0 left-0 z-50 flex max-h-96 w-full bg-gray-50 md:flex-row md:justify-center dark:bg-neutral-900">
-      <div className="flex min-h-24 w-full px-4 py-2.5 lg:ml-0 lg:justify-center lg:px-6 order-03">
-        <div className="flex items-center ">
-          <button
-            onClick={props.toggleNavBar}
-            data-collapse-toggle="mobile-menu-2"
-            type="button"
-            className="ml-1 flex items-center rounded-lg p-2 text-sm text-gray-500 lg:hidden"
-            aria-controls="mobile-menu-2"
-            aria-expanded="false"
-          >
-            <span className="sr-only">Open main menu</span>
-            {props.isPhoneNavOpen ? (
-              <XCircle size={30} />
-            ) : (
-              <svg
-                className="h-6 w-6"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1
-                  0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1
-                  1 0 110 2H4a1 1 0 01-1-1z"
-                  clipRule="evenodd"
-                ></path>
-              </svg>
-            )}
-          </button>
+    <header 
+      className="fixed top-0 left-0 right-0 z-50 h-18 w-full border-b 
+      border-slate-200/60 bg-white/80 backdrop-blur-md transition-colors 
+      duration-500 dark:border-slate-800/60 dark:bg-[#0f1115]/80"
+    >
+      <div className="mx-auto flex h-full max-w-7xl items-center justify-between px-6">
+        
+        {/* 1. LEFT: Clean Branding */}
+        <div className="flex items-center gap-3">
+          <a href="#about" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+             <span className="text-sm font-bold tracking-tight text-slate-900 dark:text-white">
+               OMAR<span className="text-sky-500">.</span>DEV
+             </span>
+          </a>
         </div>
-        <div
-          className="hidden w-full items-center justify-between lg:order-1 lg:flex lg:w-auto"
-          id="mobile-menu-2"
-        >
-          <Nav currentVisibleSection={props.currentVisibleSection} />
-        </div>
-      </div>
-      
-      <div className="mr-5 flex flex-col items-center justify-center">
-        <div className="flex items-center justify-center">
-          <button onClick={props.updateTheme}>
-            {props.theme === "dark" ? (
-              <Sun color="white" size={25} />
-            ) : (
-              <Moon size={25} />
-            )}
-          </button>
+
+        {/* 2. RIGHT: Combined Nav & Actions */}
+        <div className="flex items-center gap-6">
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:block">
+            <Nav currentVisibleSection={currentVisibleSection} />
+          </nav>
+
+          {/* Action Area (Theme + Social/Menu) */}
+          <div className="flex items-center gap-2 border-l border-slate-200 dark:border-slate-800 ml-2 pl-4">
+            <button
+              onClick={updateTheme}
+              className="p-2 text-slate-500 hover:text-sky-500 dark:text-slate-400 dark:hover:text-sky-400 transition-colors"
+              aria-label="Toggle Theme"
+            >
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.div
+                  key={theme}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.15 }}
+                >
+                  {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+                </motion.div>
+              </AnimatePresence>
+            </button>
+
+            {/* Mobile Menu Trigger */}
+            <button
+              onClick={toggleNavBar}
+              className="lg:hidden p-2 text-slate-600 dark:text-slate-400"
+            >
+              {isPhoneNavOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
+          </div>
         </div>
       </div>
     </header>

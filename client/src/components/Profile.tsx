@@ -1,4 +1,4 @@
-import profile from "../assets/profile.jpg";
+
 import { Download } from "lucide-react";
 
 export default function Profile() {
@@ -9,13 +9,13 @@ export default function Profile() {
       md:w-96 dark:bg-neutral-900 dark:shadow-blue-200"
     >
       <img
-        src={profile}
+        src={""}
         className="hidden rounded-full md:float-left md:flex md:w-50"
         alt="Omar Aidi"
       />
       <div className="mb-3 flex flex-col items-center md:hidden">
         <img
-          src={profile}
+          src={""}
           className="w-36 rounded-full sm:w-44 md:float-right md:ml-6 md:w-52"
           alt="Omar Aidi"
         />
