@@ -1,10 +1,6 @@
 import Project from "../components/Project";
 import { motion } from "framer-motion";
 
-type Props = {
-  id: string;
-  currentVisibleSection: string;
-};
 
 const projectsData = [
   {
@@ -74,7 +70,7 @@ const projectsData = [
   },
 ];
 
-export default function Projects({ id }: Props) {
+export default function Projects() {
   return (
     <div className="w-full">
       <motion.div

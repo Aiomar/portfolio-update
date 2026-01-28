@@ -3,13 +3,12 @@ import { motion } from "framer-motion";
 import { Send, MapPin, Mail, Phone } from "lucide-react";
 
 type Props = {
-  id: string;
   currentVisibleSection: string;
   setMessage: (msg: string) => void; 
   setError: (err: string) => void;
 };
 
-export default function Contact({ id, setMessage, setError }: Props) {
+export default function Contact({setMessage, setError }: Props) {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",

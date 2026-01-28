@@ -24,12 +24,7 @@ const skillsData = [
   },
 ];
 
-type Props = {
-  id: string;
-  currentVisibleSection: string;
-};
-
-export default function Resume({ id }: Props) {
+export default function Resume() {
   return (
     <div className="w-full py-12">
       <motion.div
