@@ -68,9 +68,9 @@ export default function Contact({setMessage, setError }: Props) {
           
           <div className="space-y-4">
             {[
-              { icon: <Mail size={18}/>, label: "Email", value: "your.email@example.com" },
-              { icon: <Phone size={18}/>, label: "Phone", value: "+216 -- --- ---" },
-              { icon: <MapPin size={18}/>, label: "Location", value: "Tunisia" }
+              { icon: <Mail size={18}/>, label: "Email", value: "aidi360omar@gmail.com" },
+              { icon: <Phone size={18}/>, label: "Phone", value: "+216 28431109" },
+              { icon: <MapPin size={18}/>, label: "Location", value: "Kairouan, Tunisia" }
             ].map((item, i) => (
               <div key={i} className="flex items-center gap-4 text-slate-600 dark:text-slate-300">
                 <div className="text-sky-500">{item.icon}</div>
