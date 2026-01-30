@@ -65,7 +65,7 @@ const projectsData = [
     description: "Full-stack giftcards store built with Nest js and React",
     image: "/giftboom.png",
     githubLink: "https://github.com",
-    link: "/",
+    link: "http://giftboom.vercel.app",
     status: "finished",
   },
 ];
