@@ -68,6 +68,14 @@ const projectsData = [
     link: "http://giftboom.vercel.app",
     status: "finished",
   },
+  {
+    title: "Stickify",
+    description: "Full-stack stickers seeling store built with Next js",
+    image: "/stickify.png",
+    githubLink: "https://github.com",
+    link: "http://stickifytn.vercel.app",
+    status: "finished",
+  },
 ];
 
 export default function Projects() {
